@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'truck_model.dart';
 
@@ -31,7 +32,7 @@ class _$TruckModelResponseTearOff {
     );
   }
 
-  TruckModelResponse fromJson(Map<String, Object> json) {
+  TruckModelResponse fromJson(Map<String, Object?> json) {
     return TruckModelResponse.fromJson(json);
   }
 }
@@ -50,12 +51,14 @@ mixin _$TruckModelResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TruckModelResponseCopyWith<TruckModelResponse> get copyWith => throw _privateConstructorUsedError;
+  $TruckModelResponseCopyWith<TruckModelResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TruckModelResponseCopyWith<$Res> {
-  factory $TruckModelResponseCopyWith(TruckModelResponse value, $Res Function(TruckModelResponse) then) =
+  factory $TruckModelResponseCopyWith(
+          TruckModelResponse value, $Res Function(TruckModelResponse) then) =
       _$TruckModelResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'code') int? code,
@@ -64,7 +67,8 @@ abstract class $TruckModelResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TruckModelResponseCopyWithImpl<$Res> implements $TruckModelResponseCopyWith<$Res> {
+class _$TruckModelResponseCopyWithImpl<$Res>
+    implements $TruckModelResponseCopyWith<$Res> {
   _$TruckModelResponseCopyWithImpl(this._value, this._then);
 
   final TruckModelResponse _value;
@@ -95,8 +99,10 @@ class _$TruckModelResponseCopyWithImpl<$Res> implements $TruckModelResponseCopyW
 }
 
 /// @nodoc
-abstract class _$TruckModelResponseCopyWith<$Res> implements $TruckModelResponseCopyWith<$Res> {
-  factory _$TruckModelResponseCopyWith(_TruckModelResponse value, $Res Function(_TruckModelResponse) then) =
+abstract class _$TruckModelResponseCopyWith<$Res>
+    implements $TruckModelResponseCopyWith<$Res> {
+  factory _$TruckModelResponseCopyWith(
+          _TruckModelResponse value, $Res Function(_TruckModelResponse) then) =
       __$TruckModelResponseCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -106,9 +112,11 @@ abstract class _$TruckModelResponseCopyWith<$Res> implements $TruckModelResponse
 }
 
 /// @nodoc
-class __$TruckModelResponseCopyWithImpl<$Res> extends _$TruckModelResponseCopyWithImpl<$Res>
+class __$TruckModelResponseCopyWithImpl<$Res>
+    extends _$TruckModelResponseCopyWithImpl<$Res>
     implements _$TruckModelResponseCopyWith<$Res> {
-  __$TruckModelResponseCopyWithImpl(_TruckModelResponse _value, $Res Function(_TruckModelResponse) _then)
+  __$TruckModelResponseCopyWithImpl(
+      _TruckModelResponse _value, $Res Function(_TruckModelResponse) _then)
       : super(_value, (v) => _then(v as _TruckModelResponse));
 
   @override
@@ -146,7 +154,8 @@ class _$_TruckModelResponse implements _TruckModelResponse {
       @JsonKey(name: 'message') this.message,
       @JsonKey(name: 'data') this.listSession});
 
-  factory _$_TruckModelResponse.fromJson(Map<String, dynamic> json) => _$_$_TruckModelResponseFromJson(json);
+  factory _$_TruckModelResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_TruckModelResponseFromJson(json);
 
   @override
   @JsonKey(name: 'code')
@@ -166,19 +175,17 @@ class _$_TruckModelResponse implements _TruckModelResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TruckModelResponse &&
-            (identical(other.code, code) || const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.message, message) || const DeepCollectionEquality().equals(other.message, message)) &&
-            (identical(other.listSession, listSession) ||
-                const DeepCollectionEquality().equals(other.listSession, listSession)));
+        (other.runtimeType == runtimeType &&
+            other is _TruckModelResponse &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            const DeepCollectionEquality()
+                .equals(other.listSession, listSession));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(message) ^
-      const DeepCollectionEquality().hash(listSession);
+  int get hashCode => Object.hash(runtimeType, code, message,
+      const DeepCollectionEquality().hash(listSession));
 
   @JsonKey(ignore: true)
   @override
@@ -187,30 +194,33 @@ class _$_TruckModelResponse implements _TruckModelResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_TruckModelResponseToJson(this);
+    return _$$_TruckModelResponseToJson(this);
   }
 }
 
 abstract class _TruckModelResponse implements TruckModelResponse {
   const factory _TruckModelResponse(
-      {@JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<SessionModel?>? listSession}) = _$_TruckModelResponse;
+          {@JsonKey(name: 'code') int? code,
+          @JsonKey(name: 'message') String? message,
+          @JsonKey(name: 'data') List<SessionModel?>? listSession}) =
+      _$_TruckModelResponse;
 
-  factory _TruckModelResponse.fromJson(Map<String, dynamic> json) = _$_TruckModelResponse.fromJson;
+  factory _TruckModelResponse.fromJson(Map<String, dynamic> json) =
+      _$_TruckModelResponse.fromJson;
 
   @override
   @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
   @JsonKey(name: 'message')
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(name: 'data')
-  List<SessionModel?>? get listSession => throw _privateConstructorUsedError;
+  List<SessionModel?>? get listSession;
   @override
   @JsonKey(ignore: true)
-  _$TruckModelResponseCopyWith<_TruckModelResponse> get copyWith => throw _privateConstructorUsedError;
+  _$TruckModelResponseCopyWith<_TruckModelResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 SessionModel _$SessionModelFromJson(Map<String, dynamic> json) {
@@ -222,14 +232,22 @@ class _$SessionModelTearOff {
   const _$SessionModelTearOff();
 
   _SessionModel call(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'status') String? status,
-      @JsonKey(name: 'users') List<UserModel?>? users,
-      @JsonKey(name: 'protected') bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime) DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime) DateTime? expiredAt,
-      @JsonKey(name: 'pinCode') String? pinCode}) {
+      {@JsonKey(name: 'uuid')
+          String? uuid,
+      @JsonKey(name: 'name')
+          String? name,
+      @JsonKey(name: 'status')
+          String? status,
+      @JsonKey(name: 'users')
+          List<UserModel?>? users,
+      @JsonKey(name: 'protected')
+          bool? protected,
+      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? createdAt,
+      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? expiredAt,
+      @JsonKey(name: 'pinCode')
+          String? pinCode}) {
     return _SessionModel(
       uuid: uuid,
       name: name,
@@ -242,7 +260,7 @@ class _$SessionModelTearOff {
     );
   }
 
-  SessionModel fromJson(Map<String, Object> json) {
+  SessionModel fromJson(Map<String, Object?> json) {
     return SessionModel.fromJson(json);
   }
 }
@@ -271,22 +289,32 @@ mixin _$SessionModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SessionModelCopyWith<SessionModel> get copyWith => throw _privateConstructorUsedError;
+  $SessionModelCopyWith<SessionModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SessionModelCopyWith<$Res> {
-  factory $SessionModelCopyWith(SessionModel value, $Res Function(SessionModel) then) =
+  factory $SessionModelCopyWith(
+          SessionModel value, $Res Function(SessionModel) then) =
       _$SessionModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'status') String? status,
-      @JsonKey(name: 'users') List<UserModel?>? users,
-      @JsonKey(name: 'protected') bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime) DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime) DateTime? expiredAt,
-      @JsonKey(name: 'pinCode') String? pinCode});
+      {@JsonKey(name: 'uuid')
+          String? uuid,
+      @JsonKey(name: 'name')
+          String? name,
+      @JsonKey(name: 'status')
+          String? status,
+      @JsonKey(name: 'users')
+          List<UserModel?>? users,
+      @JsonKey(name: 'protected')
+          bool? protected,
+      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? createdAt,
+      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? expiredAt,
+      @JsonKey(name: 'pinCode')
+          String? pinCode});
 }
 
 /// @nodoc
@@ -346,25 +374,36 @@ class _$SessionModelCopyWithImpl<$Res> implements $SessionModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SessionModelCopyWith<$Res> implements $SessionModelCopyWith<$Res> {
-  factory _$SessionModelCopyWith(_SessionModel value, $Res Function(_SessionModel) then) =
+abstract class _$SessionModelCopyWith<$Res>
+    implements $SessionModelCopyWith<$Res> {
+  factory _$SessionModelCopyWith(
+          _SessionModel value, $Res Function(_SessionModel) then) =
       __$SessionModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'status') String? status,
-      @JsonKey(name: 'users') List<UserModel?>? users,
-      @JsonKey(name: 'protected') bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime) DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime) DateTime? expiredAt,
-      @JsonKey(name: 'pinCode') String? pinCode});
+      {@JsonKey(name: 'uuid')
+          String? uuid,
+      @JsonKey(name: 'name')
+          String? name,
+      @JsonKey(name: 'status')
+          String? status,
+      @JsonKey(name: 'users')
+          List<UserModel?>? users,
+      @JsonKey(name: 'protected')
+          bool? protected,
+      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? createdAt,
+      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? expiredAt,
+      @JsonKey(name: 'pinCode')
+          String? pinCode});
 }
 
 /// @nodoc
 class __$SessionModelCopyWithImpl<$Res> extends _$SessionModelCopyWithImpl<$Res>
     implements _$SessionModelCopyWith<$Res> {
-  __$SessionModelCopyWithImpl(_SessionModel _value, $Res Function(_SessionModel) _then)
+  __$SessionModelCopyWithImpl(
+      _SessionModel _value, $Res Function(_SessionModel) _then)
       : super(_value, (v) => _then(v as _SessionModel));
 
   @override
@@ -423,16 +462,25 @@ class __$SessionModelCopyWithImpl<$Res> extends _$SessionModelCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
 class _$_SessionModel implements _SessionModel {
   const _$_SessionModel(
-      {@JsonKey(name: 'uuid') this.uuid,
-      @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'status') this.status,
-      @JsonKey(name: 'users') this.users,
-      @JsonKey(name: 'protected') this.protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime) this.createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime) this.expiredAt,
-      @JsonKey(name: 'pinCode') this.pinCode});
+      {@JsonKey(name: 'uuid')
+          this.uuid,
+      @JsonKey(name: 'name')
+          this.name,
+      @JsonKey(name: 'status')
+          this.status,
+      @JsonKey(name: 'users')
+          this.users,
+      @JsonKey(name: 'protected')
+          this.protected,
+      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
+          this.createdAt,
+      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
+          this.expiredAt,
+      @JsonKey(name: 'pinCode')
+          this.pinCode});
 
-  factory _$_SessionModel.fromJson(Map<String, dynamic> json) => _$_$_SessionModelFromJson(json);
+  factory _$_SessionModel.fromJson(Map<String, dynamic> json) =>
+      _$$_SessionModelFromJson(json);
 
   @override
   @JsonKey(name: 'uuid')
@@ -467,82 +515,94 @@ class _$_SessionModel implements _SessionModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SessionModel &&
-            (identical(other.uuid, uuid) || const DeepCollectionEquality().equals(other.uuid, uuid)) &&
-            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.status, status) || const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.users, users) || const DeepCollectionEquality().equals(other.users, users)) &&
+        (other.runtimeType == runtimeType &&
+            other is _SessionModel &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality().equals(other.users, users) &&
             (identical(other.protected, protected) ||
-                const DeepCollectionEquality().equals(other.protected, protected)) &&
+                other.protected == protected) &&
             (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality().equals(other.createdAt, createdAt)) &&
+                other.createdAt == createdAt) &&
             (identical(other.expiredAt, expiredAt) ||
-                const DeepCollectionEquality().equals(other.expiredAt, expiredAt)) &&
-            (identical(other.pinCode, pinCode) || const DeepCollectionEquality().equals(other.pinCode, pinCode)));
+                other.expiredAt == expiredAt) &&
+            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(uuid) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(users) ^
-      const DeepCollectionEquality().hash(protected) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(expiredAt) ^
-      const DeepCollectionEquality().hash(pinCode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      uuid,
+      name,
+      status,
+      const DeepCollectionEquality().hash(users),
+      protected,
+      createdAt,
+      expiredAt,
+      pinCode);
 
   @JsonKey(ignore: true)
   @override
-  _$SessionModelCopyWith<_SessionModel> get copyWith => __$SessionModelCopyWithImpl<_SessionModel>(this, _$identity);
+  _$SessionModelCopyWith<_SessionModel> get copyWith =>
+      __$SessionModelCopyWithImpl<_SessionModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SessionModelToJson(this);
+    return _$$_SessionModelToJson(this);
   }
 }
 
 abstract class _SessionModel implements SessionModel {
   const factory _SessionModel(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'status') String? status,
-      @JsonKey(name: 'users') List<UserModel?>? users,
-      @JsonKey(name: 'protected') bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime) DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime) DateTime? expiredAt,
-      @JsonKey(name: 'pinCode') String? pinCode}) = _$_SessionModel;
+      {@JsonKey(name: 'uuid')
+          String? uuid,
+      @JsonKey(name: 'name')
+          String? name,
+      @JsonKey(name: 'status')
+          String? status,
+      @JsonKey(name: 'users')
+          List<UserModel?>? users,
+      @JsonKey(name: 'protected')
+          bool? protected,
+      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? createdAt,
+      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
+          DateTime? expiredAt,
+      @JsonKey(name: 'pinCode')
+          String? pinCode}) = _$_SessionModel;
 
-  factory _SessionModel.fromJson(Map<String, dynamic> json) = _$_SessionModel.fromJson;
+  factory _SessionModel.fromJson(Map<String, dynamic> json) =
+      _$_SessionModel.fromJson;
 
   @override
   @JsonKey(name: 'uuid')
-  String? get uuid => throw _privateConstructorUsedError;
+  String? get uuid;
   @override
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'status')
-  String? get status => throw _privateConstructorUsedError;
+  String? get status;
   @override
   @JsonKey(name: 'users')
-  List<UserModel?>? get users => throw _privateConstructorUsedError;
+  List<UserModel?>? get users;
   @override
   @JsonKey(name: 'protected')
-  bool? get protected => throw _privateConstructorUsedError;
+  bool? get protected;
   @override
   @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
   @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-  DateTime? get expiredAt => throw _privateConstructorUsedError;
+  DateTime? get expiredAt;
   @override
   @JsonKey(name: 'pinCode')
-  String? get pinCode => throw _privateConstructorUsedError;
+  String? get pinCode;
   @override
   @JsonKey(ignore: true)
-  _$SessionModelCopyWith<_SessionModel> get copyWith => throw _privateConstructorUsedError;
+  _$SessionModelCopyWith<_SessionModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) {
@@ -568,7 +628,7 @@ class _$UserModelTearOff {
     );
   }
 
-  UserModel fromJson(Map<String, Object> json) {
+  UserModel fromJson(Map<String, Object?> json) {
     return UserModel.fromJson(json);
   }
 }
@@ -591,12 +651,14 @@ mixin _$UserModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserModelCopyWith<UserModel> get copyWith => throw _privateConstructorUsedError;
+  $UserModelCopyWith<UserModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UserModelCopyWith<$Res> {
-  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) = _$UserModelCopyWithImpl<$Res>;
+  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
+      _$UserModelCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'uuid') String? uuid,
       @JsonKey(name: 'name') String? name,
@@ -648,7 +710,9 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
-  factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) then) = __$UserModelCopyWithImpl<$Res>;
+  factory _$UserModelCopyWith(
+          _UserModel value, $Res Function(_UserModel) then) =
+      __$UserModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'uuid') String? uuid,
@@ -659,7 +723,8 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res> implements _$UserModelCopyWith<$Res> {
+class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
+    implements _$UserModelCopyWith<$Res> {
   __$UserModelCopyWithImpl(_UserModel _value, $Res Function(_UserModel) _then)
       : super(_value, (v) => _then(v as _UserModel));
 
@@ -710,7 +775,8 @@ class _$_UserModel implements _UserModel {
       @JsonKey(name: 'scores') this.scores,
       @JsonKey(name: 'created_at') this.createdAt});
 
-  factory _$_UserModel.fromJson(Map<String, dynamic> json) => _$_$_UserModelFromJson(json);
+  factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
+      _$$_UserModelFromJson(json);
 
   @override
   @JsonKey(name: 'uuid')
@@ -736,31 +802,28 @@ class _$_UserModel implements _UserModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserModel &&
-            (identical(other.uuid, uuid) || const DeepCollectionEquality().equals(other.uuid, uuid)) &&
-            (identical(other.name, name) || const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.email, email) || const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.scores, scores) || const DeepCollectionEquality().equals(other.scores, scores)) &&
+        (other.runtimeType == runtimeType &&
+            other is _UserModel &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.scores, scores) || other.scores == scores) &&
             (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality().equals(other.createdAt, createdAt)));
+                other.createdAt == createdAt));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(uuid) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(scores) ^
-      const DeepCollectionEquality().hash(createdAt);
+      Object.hash(runtimeType, uuid, name, email, scores, createdAt);
 
   @JsonKey(ignore: true)
   @override
-  _$UserModelCopyWith<_UserModel> get copyWith => __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
+  _$UserModelCopyWith<_UserModel> get copyWith =>
+      __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserModelToJson(this);
+    return _$$_UserModelToJson(this);
   }
 }
 
@@ -772,24 +835,26 @@ abstract class _UserModel implements UserModel {
       @JsonKey(name: 'scores') int? scores,
       @JsonKey(name: 'created_at') String? createdAt}) = _$_UserModel;
 
-  factory _UserModel.fromJson(Map<String, dynamic> json) = _$_UserModel.fromJson;
+  factory _UserModel.fromJson(Map<String, dynamic> json) =
+      _$_UserModel.fromJson;
 
   @override
   @JsonKey(name: 'uuid')
-  String? get uuid => throw _privateConstructorUsedError;
+  String? get uuid;
   @override
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'email')
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
   @JsonKey(name: 'scores')
-  int? get scores => throw _privateConstructorUsedError;
+  int? get scores;
   @override
   @JsonKey(name: 'created_at')
-  String? get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$UserModelCopyWith<_UserModel> get copyWith => throw _privateConstructorUsedError;
+  _$UserModelCopyWith<_UserModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }

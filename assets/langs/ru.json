@@ -1,7 +1,8 @@
 {
   "inputEmail": "Введите Email",
   "input": "Войти",
-  "login": "Логин",
+  "singInGoogle": "Вход через Google",
+  "login": "Вход",
   "listTruck": "Список сессий",
   "session": "Открытая сессия",
   "settings": "Настройки",

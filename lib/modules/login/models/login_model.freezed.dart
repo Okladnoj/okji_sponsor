@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'login_model.dart';
 
@@ -31,7 +32,7 @@ class _$LoginModelResponseTearOff {
     );
   }
 
-  LoginModelResponse fromJson(Map<String, Object> json) {
+  LoginModelResponse fromJson(Map<String, Object?> json) {
     return LoginModelResponse.fromJson(json);
   }
 }
@@ -170,7 +171,7 @@ class _$_LoginModelResponse implements _LoginModelResponse {
       @JsonKey(name: 'data') this.data});
 
   factory _$_LoginModelResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_LoginModelResponseFromJson(json);
+      _$$_LoginModelResponseFromJson(json);
 
   @override
   @JsonKey(name: 'code')
@@ -190,22 +191,15 @@ class _$_LoginModelResponse implements _LoginModelResponse {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoginModelResponse &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality()
-                    .equals(other.message, message)) &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+        (other.runtimeType == runtimeType &&
+            other is _LoginModelResponse &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(message) ^
-      const DeepCollectionEquality().hash(data);
+  int get hashCode => Object.hash(runtimeType, code, message, data);
 
   @JsonKey(ignore: true)
   @override
@@ -214,7 +208,7 @@ class _$_LoginModelResponse implements _LoginModelResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_LoginModelResponseToJson(this);
+    return _$$_LoginModelResponseToJson(this);
   }
 }
 
@@ -229,13 +223,13 @@ abstract class _LoginModelResponse implements LoginModelResponse {
 
   @override
   @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
   @JsonKey(name: 'message')
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(name: 'data')
-  LoginModel? get data => throw _privateConstructorUsedError;
+  LoginModel? get data;
   @override
   @JsonKey(ignore: true)
   _$LoginModelResponseCopyWith<_LoginModelResponse> get copyWith =>
@@ -259,7 +253,7 @@ class _$LoginModelTearOff {
     );
   }
 
-  LoginModel fromJson(Map<String, Object> json) {
+  LoginModel fromJson(Map<String, Object?> json) {
     return LoginModel.fromJson(json);
   }
 }
@@ -379,7 +373,7 @@ class _$_LoginModel implements _LoginModel {
       {@JsonKey(name: 'user') this.user, @JsonKey(name: 'token') this.token});
 
   factory _$_LoginModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_LoginModelFromJson(json);
+      _$$_LoginModelFromJson(json);
 
   @override
   @JsonKey(name: 'user')
@@ -396,18 +390,14 @@ class _$_LoginModel implements _LoginModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoginModel &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)) &&
-            (identical(other.token, token) ||
-                const DeepCollectionEquality().equals(other.token, token)));
+        (other.runtimeType == runtimeType &&
+            other is _LoginModel &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(user) ^
-      const DeepCollectionEquality().hash(token);
+  int get hashCode => Object.hash(runtimeType, user, token);
 
   @JsonKey(ignore: true)
   @override
@@ -416,7 +406,7 @@ class _$_LoginModel implements _LoginModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_LoginModelToJson(this);
+    return _$$_LoginModelToJson(this);
   }
 }
 
@@ -430,10 +420,10 @@ abstract class _LoginModel implements LoginModel {
 
   @override
   @JsonKey(name: 'user')
-  UserModel? get user => throw _privateConstructorUsedError;
+  UserModel? get user;
   @override
   @JsonKey(name: 'token')
-  String? get token => throw _privateConstructorUsedError;
+  String? get token;
   @override
   @JsonKey(ignore: true)
   _$LoginModelCopyWith<_LoginModel> get copyWith =>
@@ -461,7 +451,7 @@ class _$UserModelTearOff {
     );
   }
 
-  UserModel fromJson(Map<String, Object> json) {
+  UserModel fromJson(Map<String, Object?> json) {
     return UserModel.fromJson(json);
   }
 }
@@ -594,7 +584,7 @@ class _$_UserModel implements _UserModel {
       @JsonKey(name: 'created_at') this.createdAt});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserModelFromJson(json);
+      _$$_UserModelFromJson(json);
 
   @override
   @JsonKey(name: 'uuid')
@@ -617,25 +607,17 @@ class _$_UserModel implements _UserModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserModel &&
-            (identical(other.uuid, uuid) ||
-                const DeepCollectionEquality().equals(other.uuid, uuid)) &&
-            (identical(other.kind, kind) ||
-                const DeepCollectionEquality().equals(other.kind, kind)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
+        (other.runtimeType == runtimeType &&
+            other is _UserModel &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.kind, kind) || other.kind == kind) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(uuid) ^
-      const DeepCollectionEquality().hash(kind) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(createdAt);
+  int get hashCode => Object.hash(runtimeType, uuid, kind, email, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -644,7 +626,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserModelToJson(this);
+    return _$$_UserModelToJson(this);
   }
 }
 
@@ -660,16 +642,16 @@ abstract class _UserModel implements UserModel {
 
   @override
   @JsonKey(name: 'uuid')
-  String? get uuid => throw _privateConstructorUsedError;
+  String? get uuid;
   @override
   @JsonKey(name: 'kind')
-  String? get kind => throw _privateConstructorUsedError;
+  String? get kind;
   @override
   @JsonKey(name: 'email')
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
   @JsonKey(name: 'created_at')
-  String? get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith =>
@@ -693,7 +675,7 @@ class _$SinInModelTearOff {
     );
   }
 
-  SinInModel fromJson(Map<String, Object> json) {
+  SinInModel fromJson(Map<String, Object?> json) {
     return SinInModel.fromJson(json);
   }
 }
@@ -798,7 +780,7 @@ class _$_SinInModel implements _SinInModel {
       @JsonKey(name: 'password') this.password});
 
   factory _$_SinInModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_SinInModelFromJson(json);
+      _$$_SinInModelFromJson(json);
 
   @override
   @JsonKey(name: 'email')
@@ -815,19 +797,15 @@ class _$_SinInModel implements _SinInModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SinInModel &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
+        (other.runtimeType == runtimeType &&
+            other is _SinInModel &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                other.password == password));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -836,7 +814,7 @@ class _$_SinInModel implements _SinInModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SinInModelToJson(this);
+    return _$$_SinInModelToJson(this);
   }
 }
 
@@ -850,10 +828,10 @@ abstract class _SinInModel implements SinInModel {
 
   @override
   @JsonKey(name: 'email')
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
   @JsonKey(name: 'password')
-  String? get password => throw _privateConstructorUsedError;
+  String? get password;
   @override
   @JsonKey(ignore: true)
   _$SinInModelCopyWith<_SinInModel> get copyWith =>

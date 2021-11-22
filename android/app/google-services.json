@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "399707653351",
+    "project_id": "sponsor-okji",
+    "storage_bucket": "sponsor-okji.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399707653351:android:369c23d328f3d077c8ce42",
+        "android_client_info": {
+          "package_name": "com.okji.sponsor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399707653351-adp1im9u4q1p9hosh38ft6kldlp31rrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_FIOEqYgsySCJbmqFYittfzj6-85yjNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399707653351-adp1im9u4q1p9hosh38ft6kldlp31rrg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "399707653351-lp4383e9ea7m1ni0etdmqhiavm5o0t87.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.okji.sponsor"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,35 +1,22 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import '../../../services/settings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-import '../models/login_model.dart';
+import '../../../services/settings.dart';
 
 class LoginApi {
   final _dio = Dio();
 
-  Future<LoginModelResponse?> onSingIn(SinInModel model) async {
-    LoginModelResponse? result;
-    final body = model.toJson();
-    final response = await _dio.post(
-      AppPreference.baseUrl + 'oauth/google/login',
-      data: body,
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
     );
 
-    final data = response.data as Map<String, dynamic>?;
-
-    if (data != null) {
-      result = await compute<Map<String, dynamic>, LoginModelResponse>(
-        _parseLoginModel,
-        data,
-      );
-    }
-
-    return result;
-  }
-
-  static Future<LoginModelResponse> _parseLoginModel(
-    Map<String, dynamic> body,
-  ) async {
-    return LoginModelResponse.fromJson(body);
+    return FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

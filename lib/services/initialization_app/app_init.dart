@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+
 import '../localization/localization_repo.dart';
 
 import '../settings.dart';
@@ -7,6 +9,7 @@ import 'themes_init.dart';
 class AppInit {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
     await AppPreference.init();
     await ThemesInit.init();
     final lS = await LocaleRepository.instance.loadLocale();

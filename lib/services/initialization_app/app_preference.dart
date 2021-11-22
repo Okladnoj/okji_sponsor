@@ -4,8 +4,6 @@ class AppPreference {
   static bool isIntoApp = false;
   static String token = '';
   static const baseUrl = 'https://taptap.phish.xlab13.com/';
-  static const _baseSocketUrl = 'wss://taptap.phish.xlab13.com/';
-  static String socketUrl(String code) => _baseSocketUrl + code;
   static Future<void> init() async {
     await _getLoginStatus();
     await _getToken();

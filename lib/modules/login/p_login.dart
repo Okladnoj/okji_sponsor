@@ -1,3 +1,6 @@
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
+
 import '../../../services/settings.dart';
 
 import 'i_login.dart';
@@ -36,19 +39,19 @@ class LoginPState extends State<LoginP> with ErrorHandlerState {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<LoginModelUI>(
-        stream: _interactor.observer,
-        builder: (context, s) {
-          _modelUI = s.data ?? _modelUI;
-          return ScreenFormer(
-            streamLoadingStatus: _interactor.observerLoading,
-            titleActions: _buildTitle(),
-            floatingButton: _buildButtonSendReport(),
-            children: [
-              _buildLogo(),
-              _buildEmailInput(),
-            ],
-          );
-        });
+      stream: _interactor.observer,
+      builder: (context, s) {
+        _modelUI = s.data ?? _modelUI;
+        return ScreenFormer(
+          streamLoadingStatus: _interactor.observerLoading,
+          titleActions: _buildTitle(),
+          children: [
+            _buildLogo(),
+            _buildButtonSendReport(),
+          ],
+        );
+      },
+    );
   }
 
   Widget _buildTitle() {
@@ -62,42 +65,19 @@ class LoginPState extends State<LoginP> with ErrorHandlerState {
     );
   }
 
-  Widget _buildEmailInput() {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: TextFormDesign(
-        controller: _controller,
-        hintText: 'your_email@site.com',
-        labelText: Strings.text.inputEmail,
-      ),
-    );
-  }
-
   Widget _buildButtonSendReport() {
-    final isSave = _modelUI?.isConfirm ?? false;
-
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: InkCustomSimple(
-        onTap: isSave ? () => _interactor.onSingIn() : null,
-        child: Container(
-          alignment: const Alignment(0, 0),
-          padding: const EdgeInsets.symmetric(vertical: 5),
-          decoration: DesignStyles.buttonDecoration(
-            blurRadius: 10,
-            borderRadius: 10,
-            offset: const Offset(0, 2),
-            colorBoxShadow: isSave ? DesignStyles.colorDark : DesignStyles.colorMiddle,
-            color: isSave ? DesignStyles.colorDark : DesignStyles.colorMiddle,
-          ),
-          child: Text(
-            Strings.text.input,
-            style: DesignStyles.textCustom(
-              fontSize: 24,
-              color: DesignStyles.colorLight,
-            ),
-          ),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: SignInButton(
+        Buttons.Google,
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.blue.shade900, width: 0.5),
+          borderRadius: BorderRadius.circular(10),
         ),
+        text: Strings.text.singInGoogle,
+        onPressed: _interactor.signInWithGoogle,
+        padding: const EdgeInsets.symmetric(vertical: 5),
       ),
     );
   }

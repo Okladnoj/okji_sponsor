@@ -16,6 +16,7 @@ class Strings {
 
   String get inputEmail => _getText('inputEmail');
   String get input => _getText('input');
+  String get singInGoogle => _getText('singInGoogle');
   String get login => _getText('login');
   String get listTruck => _getText('listTruck');
   String get session => _getText('session');

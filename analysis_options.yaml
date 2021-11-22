@@ -11,3 +11,10 @@ linter:
     avoid_print: false
     sort_pub_dependencies: false
     use_named_constants: false
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../modules/login/s_login.dart';
 import '../../../services/settings.dart';
 
@@ -27,19 +29,20 @@ class LoginInteractor with BaseInteractor<LoginModelUI> {
     _updateUI();
   }
 
-  Future<void> onSingIn() async {
+  Future<void> signInWithGoogle() async {
     sinkLoading.add(true);
-    LoginModelResponse? result;
-    try {
-      result = await _api.onSingIn(_sinInModel);
 
-      if (result?.code == 1) {
-        AppPreference.token = result?.data?.token ?? '';
+    try {
+      final result = await _api.signInWithGoogle();
+      final user = result.user;
+
+      if (user != null) {
+        AppPreference.token = user.uid;
         await AppPreferences.setString(AppPreferencesString.token, AppPreference.token);
         await AppPreferences.setBool(AppPreferencesBool.isLogin, true);
         _deps?.onLoginConfirm();
       } else {
-        _state.showErrorMessage(result?.message);
+        _state.showErrorMessage('result?.message');
       }
       _updateUI();
     } catch (e) {
