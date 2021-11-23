@@ -14,7 +14,7 @@ class TapTap extends MaterialApp {
           navigatorObservers: [
             // FirebaseAnalyticsObserver(analytics: AnalyticAppEvents.getInstance),
           ],
-          title: 'Run Earn',
+          title: 'Run for Money',
           navigatorKey: DesignStyles.navigatorKey,
           home: const RootPage(),
           theme: DesignStyles.themeData,
