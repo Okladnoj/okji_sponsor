@@ -1,11 +1,16 @@
+import 'dart:convert';
+
+import '../../models/user/login_model.dart';
 import '../settings.dart';
 
 class AppPreference {
   static bool isIntoApp = false;
   static String token = '';
+  static UserModel user = const UserModel();
   static const baseUrl = 'https://taptap.phish.xlab13.com/';
   static Future<void> init() async {
     await _getLoginStatus();
+    await _getUser();
     await _getToken();
   }
 
@@ -26,6 +31,14 @@ class AppPreference {
     } else {
       isIntoApp = false;
       AppPreferences.setBool(AppPreferencesBool.isLogin, isIntoApp);
+    }
+  }
+
+  static Future<void> _getUser() async {
+    if (isIntoApp) {
+      final _sUser = await AppPreferences.getString(AppPreferencesString.user) ?? '{}';
+      final json = jsonDecode(_sUser) as Map<String, dynamic>;
+      user = UserModel.fromJson(json);
     }
   }
 

@@ -57,4 +57,5 @@ enum AppPreferencesString {
   someString,
   theme,
   token,
+  user,
 }

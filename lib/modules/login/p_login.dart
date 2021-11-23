@@ -2,9 +2,8 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 
 import '../../../services/settings.dart';
-
+import '../../models/user/login_mode_iu.dart';
 import 'i_login.dart';
-import 'models/login_mode_iu.dart';
 
 class LoginP extends StatefulWidget {
   static const id = 'LoginP';
@@ -18,27 +17,18 @@ class LoginP extends StatefulWidget {
 }
 
 class LoginPState extends State<LoginP> with ErrorHandlerState {
-  LoginModelUI? _modelUI;
+  UserModelUI? _modelUI;
   late final LoginInteractor _interactor;
-  late final TextEditingController? _controller;
 
   @override
   void initState() {
     _interactor = LoginInteractor(this);
-    _controller = TextEditingController();
-    _addListeners();
     super.initState();
-  }
-
-  void _addListeners() {
-    _controller?.addListener(() {
-      _interactor.onChangeEmail(_controller?.text ?? '');
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<LoginModelUI>(
+    return StreamBuilder<UserModelUI>(
       stream: _interactor.observer,
       builder: (context, s) {
         _modelUI = s.data ?? _modelUI;
@@ -47,7 +37,7 @@ class LoginPState extends State<LoginP> with ErrorHandlerState {
           titleActions: _buildTitle(),
           children: [
             _buildLogo(),
-            _buildButtonSendReport(),
+            _buildSignInWithGoogle(),
           ],
         );
       },
@@ -65,7 +55,7 @@ class LoginPState extends State<LoginP> with ErrorHandlerState {
     );
   }
 
-  Widget _buildButtonSendReport() {
+  Widget _buildSignInWithGoogle() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SignInButton(

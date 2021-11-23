@@ -6,66 +6,67 @@ part of 'truck_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TruckModelResponse _$$_TruckModelResponseFromJson(
-        Map<String, dynamic> json) =>
-    _$_TruckModelResponse(
-      code: json['code'] as int?,
-      message: json['message'] as String?,
-      listSession: (json['data'] as List<dynamic>?)
+_$_TruckModel _$$_TruckModelFromJson(Map<String, dynamic> json) =>
+    _$_TruckModel(
+      currentPoint: json['currentPoint'] == null
+          ? null
+          : CurrentPointModel.fromJson(
+              json['currentPoint'] as Map<String, dynamic>),
+      currentPoints: (json['currentPoints'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : SessionModel.fromJson(e as Map<String, dynamic>))
+              : CurrentPointModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      midPoints: (json['midPoints'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : CurrentPointModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TruckModelResponseToJson(
-        _$_TruckModelResponse instance) =>
+Map<String, dynamic> _$$_TruckModelToJson(_$_TruckModel instance) =>
     <String, dynamic>{
-      'code': instance.code,
-      'message': instance.message,
-      'data': instance.listSession?.map((e) => e?.toJson()).toList(),
+      'currentPoint': instance.currentPoint?.toJson(),
+      'currentPoints': instance.currentPoints?.map((e) => e?.toJson()).toList(),
+      'midPoints': instance.midPoints?.map((e) => e?.toJson()).toList(),
     };
 
-_$_SessionModel _$$_SessionModelFromJson(Map<String, dynamic> json) =>
-    _$_SessionModel(
-      uuid: json['uuid'] as String?,
-      name: json['name'] as String?,
-      status: json['status'] as String?,
-      users: (json['users'] as List<dynamic>?)
-          ?.map((e) =>
-              e == null ? null : UserModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      protected: json['protected'] as bool?,
-      createdAt: JsonParser.stringToDateTime(json['created_at'] as String?),
-      expiredAt: JsonParser.stringToDateTime(json['expired_at'] as String?),
-      pinCode: json['pinCode'] as String?,
+_$_CurrentPointModel _$$_CurrentPointModelFromJson(Map<String, dynamic> json) =>
+    _$_CurrentPointModel(
+      accelerometer: json['accelerometer'] == null
+          ? null
+          : VolumeModel.fromJson(json['accelerometer'] as Map<String, dynamic>),
+      userAccelerometer: json['userAccelerometer'] == null
+          ? null
+          : VolumeModel.fromJson(
+              json['userAccelerometer'] as Map<String, dynamic>),
+      gyroscope: json['gyroscope'] == null
+          ? null
+          : VolumeModel.fromJson(json['gyroscope'] as Map<String, dynamic>),
+      magnetometer: json['magnetometer'] == null
+          ? null
+          : VolumeModel.fromJson(json['magnetometer'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_SessionModelToJson(_$_SessionModel instance) =>
+Map<String, dynamic> _$$_CurrentPointModelToJson(
+        _$_CurrentPointModel instance) =>
     <String, dynamic>{
-      'uuid': instance.uuid,
-      'name': instance.name,
-      'status': instance.status,
-      'users': instance.users?.map((e) => e?.toJson()).toList(),
-      'protected': instance.protected,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'expired_at': instance.expiredAt?.toIso8601String(),
-      'pinCode': instance.pinCode,
+      'accelerometer': instance.accelerometer?.toJson(),
+      'userAccelerometer': instance.userAccelerometer?.toJson(),
+      'gyroscope': instance.gyroscope?.toJson(),
+      'magnetometer': instance.magnetometer?.toJson(),
     };
 
-_$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
-      uuid: json['uuid'] as String?,
-      name: json['name'] as String?,
-      email: json['email'] as String?,
-      scores: json['scores'] as int?,
-      createdAt: json['created_at'] as String?,
+_$_VolumeModel _$$_VolumeModelFromJson(Map<String, dynamic> json) =>
+    _$_VolumeModel(
+      x: (json['x'] as num?)?.toDouble(),
+      y: (json['y'] as num?)?.toDouble(),
+      z: (json['z'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
+Map<String, dynamic> _$$_VolumeModelToJson(_$_VolumeModel instance) =>
     <String, dynamic>{
-      'uuid': instance.uuid,
-      'name': instance.name,
-      'email': instance.email,
-      'scores': instance.scores,
-      'created_at': instance.createdAt,
+      'x': instance.x,
+      'y': instance.y,
+      'z': instance.z,
     };

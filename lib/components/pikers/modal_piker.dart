@@ -29,31 +29,33 @@ class CustomButtonModalPiker<T> extends StatelessWidget {
       children: [
         child,
         InkCustomSimple(
-            onTap: () {
-              _showPicker(context);
-            },
-            child: Container(height: height)),
+          onTap: () {
+            _showPicker(context);
+          },
+          child: Container(height: height),
+        ),
       ],
     );
   }
 
   void _showPicker(BuildContext context) {
     showCupertinoModalPopup(
-        context: context,
-        builder: (_) => Container(
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              height: 250,
-              decoration: DesignStyles.buttonDecoration(),
-              child: CupertinoPicker(
-                backgroundColor: DesignStyles.colorLight.withOpacity(0.8),
-                itemExtent: 50,
-                scrollController: FixedExtentScrollController(initialItem: initialItem.id),
-                onSelectedItemChanged: (i) {
-                  onTap(listPikModels[i].value);
-                },
-                children: listPikModels.map((e) => _buildLabelOfMonth(e)).toList(),
-              ),
-            ));
+      context: context,
+      builder: (_) => Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        height: 250,
+        decoration: DesignStyles.buttonDecoration(),
+        child: CupertinoPicker(
+          backgroundColor: DesignStyles.colorLight.withOpacity(0.8),
+          itemExtent: 50,
+          scrollController: FixedExtentScrollController(initialItem: initialItem.id),
+          onSelectedItemChanged: (i) {
+            onTap(listPikModels[i].value);
+          },
+          children: listPikModels.map((e) => _buildLabelOfMonth(e)).toList(),
+        ),
+      ),
+    );
   }
 
   Widget _buildLabelOfMonth(PikModel<T> e) {
@@ -161,33 +163,34 @@ Widget gChooserInt(
   StreamController<dynamic>? closeOpen,
 }) {
   final List<PikModel<int>> listPikModels = List.generate(
-      _maxValue ?? 0,
-      (i) => PikModel(
-            i,
-            '${i + 1}',
-            i + 1,
-            chooseElement: Center(
-              child: Text(
-                '${i + 1}',
-                style: DesignStyles.textCustom(color: DesignStyles.colorDark, fontSize: 22),
-              ),
-            ),
-            listElement: DropdownMenuItem<int>(
-              value: i,
-              child: Container(
-                color: i + 1 == _currentValue ? DesignStyles.transparent : DesignStyles.colorLight,
-                height: 50,
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('${i + 1}'),
-                    // Text('bolusId: ${cow.bolusId * DesignStyles.maskCode}'),
-                  ],
-                ),
-              ),
-            ),
-          ));
+    _maxValue ?? 0,
+    (i) => PikModel(
+      i,
+      '${i + 1}',
+      i + 1,
+      chooseElement: Center(
+        child: Text(
+          '${i + 1}',
+          style: DesignStyles.textCustom(color: DesignStyles.colorDark, fontSize: 22),
+        ),
+      ),
+      listElement: DropdownMenuItem<int>(
+        value: i,
+        child: Container(
+          color: i + 1 == _currentValue ? DesignStyles.transparent : DesignStyles.colorLight,
+          height: 50,
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('${i + 1}'),
+              // Text('bolusId: ${cow.bolusId * DesignStyles.maskCode}'),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
   late PikModel<int> initialItem;
   try {
     initialItem = listPikModels.firstWhere((e) => e.value == (_currentValue ?? '0'));

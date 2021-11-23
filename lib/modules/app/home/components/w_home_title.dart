@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../../services/settings.dart';
 
-class TruckTitle extends StatelessWidget {
+class HomeTitle extends StatelessWidget {
   final String nameTitle;
   final Future<void> Function()? subBackFunction;
 
-  const TruckTitle({
+  const HomeTitle({
     Key? key,
     required this.nameTitle,
     this.subBackFunction,

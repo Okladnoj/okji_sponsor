@@ -1,4 +1,5 @@
-import 'package:intl/intl.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 
 import '../../../services/settings.dart';
 
@@ -11,8 +12,8 @@ import 's_truck.dart';
 class TruckInteractor with BaseInteractor<TruckModelUI> {
   late final TruckPState _state;
   late final TruckApi _api;
-  TruckModelResponse? _model;
-  Timer? _timer;
+  TruckModel _model = TruckModel.empty();
+  Ticker? _ticker;
 
   TruckInteractor(this._state) {
     _init();
@@ -20,117 +21,200 @@ class TruckInteractor with BaseInteractor<TruckModelUI> {
   Future<void> _init() async {
     sinkLoading.add(true);
     _api = TruckApi();
-    await getTruck();
-    _updateUI();
+
+    _startListenersOfDevice();
+    _startTickerUpdateUI();
     sinkLoading.add(false);
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      try {
-        _model = _model?.copyWith(
-            listSession: _model?.listSession?.whereType<SessionModel>().map((e) {
-                  return e.copyWith(
-                    expiredAt: e.expiredAt?.add(
-                      const Duration(seconds: -1),
-                    ),
-                  );
-                }).toList() ??
-                []);
-        _updateUI();
-      } catch (e) {
-        print(e);
-      }
-    });
-  }
-
-  Future<void> getTruck() async {
-    try {
-      _model = await _api.getTruck();
-      if ((_model?.code ?? 2) != 1) {
-        _state.showErrorMessage(_model?.message);
-        return;
-      }
-
-      _updateUI();
-    } catch (e) {
-      _state.showError(e);
-    }
   }
 
   Future<void> toScreenAddSession() async {
     await _deps?.onSessionAdd();
-    await getTruck();
-  }
-
-  Future<void> openTruck(SessionModelUI sessionModelUI) async {
-    sinkLoading.add(true);
-
-    sinkLoading.add(false);
   }
 
   void _updateUI() {
     sink.add(_mapToUI());
   }
 
-  TruckModelUI _mapToUI() => TruckModelUI(_model?.listSession
-          ?.whereType<SessionModel>()
-          .map(
-            (e) => _mapToSessionModel(e),
-          )
-          .toList() ??
-      []);
+  TruckModelUI _mapToUI() {
+    return TruckModelUI(
+      _mapToCurrentPointModelUI(_model.midPoints?.last),
+      _mapToListCurrentPointModelUI(_model.midPoints),
+    );
+  }
 
-  SessionModelUI _mapToSessionModel(SessionModel? session) => SessionModelUI(
-        session?.uuid ?? '',
-        session?.name ?? '',
-        session?.status == 'ready',
-        _mapToListUserModelUI(session?.users),
-        session?.protected ?? false,
-        _formatDateTime(session?.createdAt),
-        _formatDateTimeToLast(session?.expiredAt),
-        session,
+  CurrentPointModelUI _mapToCurrentPointModelUI(CurrentPointModel? currentPoint) {
+    return CurrentPointModelUI(
+      _mapToVolumeModelUI(currentPoint?.accelerometer),
+      _mapToVolumeModelUI(currentPoint?.userAccelerometer),
+      _mapToVolumeModelUI(currentPoint?.gyroscope),
+      _mapToVolumeModelUI(currentPoint?.magnetometer),
+    );
+  }
+
+  List<CurrentPointModelUI> _mapToListCurrentPointModelUI(List<CurrentPointModel?>? midPoints) {
+    return midPoints
+            ?.whereType<CurrentPointModel>()
+            .map(
+              (e) => CurrentPointModelUI(
+                _mapToVolumeModelUI(e.accelerometer),
+                _mapToVolumeModelUI(e.userAccelerometer),
+                _mapToVolumeModelUI(e.gyroscope),
+                _mapToVolumeModelUI(e.magnetometer),
+              ),
+            )
+            .toList() ??
+        [];
+  }
+
+  VolumeModelUI _mapToVolumeModelUI(VolumeModel? v) {
+    return VolumeModelUI(
+      v?.x ?? 0,
+      v?.y ?? 0,
+      v?.z ?? 0,
+    );
+  }
+
+  void _startListenersOfDevice() {
+    // [AccelerometerEvent (x: 0.0, y: 9.8, z: 0.0)]
+    accelerometerEvents.listen((AccelerometerEvent event) {
+      _model = _model.copyWith(
+        currentPoint: _model.currentPoint?.copyWith(
+          accelerometer: VolumeModel(
+            x: event.x,
+            y: event.y,
+            z: event.z,
+          ),
+        ),
       );
+    });
 
-  List<UserModelUI> _mapToListUserModelUI(List<UserModel?>? users) =>
-      users
-          ?.whereType<UserModel>()
-          .map((e) => UserModelUI(
-                e.uuid ?? '',
-                e.name ?? '',
-                e.email ?? '',
-                e.scores ?? 0,
-                e.createdAt ?? '',
-                e,
-              ))
-          .toList() ??
-      [];
+    // [UserAccelerometerEvent (x: 0.0, y: 0.0, z: 0.0)]
+    userAccelerometerEvents.listen((UserAccelerometerEvent event) {
+      _model = _model.copyWith(
+        currentPoint: _model.currentPoint?.copyWith(
+          userAccelerometer: VolumeModel(
+            x: event.x,
+            y: event.y,
+            z: event.z,
+          ),
+        ),
+      );
+    });
 
-  String _formatDateTime(DateTime? date) {
-    if (date != null) {
-      return _f.format(date);
-    } else {
-      return 'Нет даты';
-    }
+    // [GyroscopeEvent (x: 0.0, y: 0.0, z: 0.0)]
+    gyroscopeEvents.listen((GyroscopeEvent event) {
+      _model = _model.copyWith(
+        currentPoint: _model.currentPoint?.copyWith(
+          gyroscope: VolumeModel(
+            x: event.x,
+            y: event.y,
+            z: event.z,
+          ),
+        ),
+      );
+    });
+
+    // [MagnetometerEvent (x: 0.0, y: 0.0, z: 0.0)]
+    magnetometerEvents.listen((MagnetometerEvent event) {
+      _model = _model.copyWith(
+        currentPoint: _model.currentPoint?.copyWith(
+          magnetometer: VolumeModel(
+            x: event.x,
+            y: event.y,
+            z: event.z,
+          ),
+        ),
+      );
+    });
   }
 
-  String _formatDateTimeToLast(DateTime? date) {
-    if (date != null) {
-      final d = DateTime.now();
-      final duration = date.difference(d);
-      if (duration.inSeconds > 0) {
-        return '0';
+  int _tic = 0;
+
+  void _startTickerUpdateUI() {
+    const stepCalculate = 30;
+    _ticker = Ticker((_) {
+      _model.currentPoints?.add(_model.currentPoint);
+      final isUpdate = (_tic % stepCalculate) == 0;
+      if (isUpdate) {
+        if (stepCalculate == _tic) {
+          _tic = 0;
+        }
+        final p = _calculateMidPoint(_model.currentPoints);
+        if ((_model.midPoints?.length ?? 0) > 5) {
+          _model.midPoints?.removeAt(0);
+          _model.midPoints?.add(p);
+        } else {
+          _model.midPoints?.add(p);
+        }
+
+        _model.currentPoints?.clear();
+        _updateUI();
       }
-      return _f.format(DateTime(0, 0, 0).add(duration));
-    } else {
-      return 'Нет даты';
-    }
+      _tic++;
+    })
+      ..start();
   }
 
-  final _f = DateFormat('m:ss');
+  CurrentPointModel _calculateMidPoint(List<CurrentPointModel?>? currentPoints) {
+    final _currentPoints = currentPoints?.whereType<CurrentPointModel>().toList() ?? [];
+    final accelerometerList = _currentPoints.map((e) => e.accelerometer).whereType<VolumeModel>().toList();
+    final userAccelerometerList = _currentPoints.map((e) => e.userAccelerometer).whereType<VolumeModel>().toList();
+    final gyroscopeList = _currentPoints.map((e) => e.gyroscope).whereType<VolumeModel>().toList();
+    final magnetometerList = _currentPoints.map((e) => e.magnetometer).whereType<VolumeModel>().toList();
+
+    final accelerometer = accelerometerList.fold<VolumeModel>(
+      const VolumeModel(x: 0, y: 0, z: 0),
+      (p, n) => VolumeModel(
+        x: (p.x ?? 0) + (n.x ?? 0),
+        y: (p.y ?? 0) + (n.y ?? 0),
+        z: (p.z ?? 0) + (n.z ?? 0),
+      ),
+    );
+    final userAccelerometer = userAccelerometerList.fold<VolumeModel>(
+      const VolumeModel(x: 0, y: 0, z: 0),
+      (p, n) => VolumeModel(
+        x: (p.x ?? 0) + (n.x ?? 0),
+        y: (p.y ?? 0) + (n.y ?? 0),
+        z: (p.z ?? 0) + (n.z ?? 0),
+      ),
+    );
+    final gyroscope = gyroscopeList.fold<VolumeModel>(
+      const VolumeModel(x: 0, y: 0, z: 0),
+      (p, n) => VolumeModel(
+        x: (p.x ?? 0) + (n.x ?? 0),
+        y: (p.y ?? 0) + (n.y ?? 0),
+        z: (p.z ?? 0) + (n.z ?? 0),
+      ),
+    );
+    final magnetometer = magnetometerList.fold<VolumeModel>(
+      const VolumeModel(x: 0, y: 0, z: 0),
+      (p, n) => VolumeModel(
+        x: (p.x ?? 0) + (n.x ?? 0),
+        y: (p.y ?? 0) + (n.y ?? 0),
+        z: (p.z ?? 0) + (n.z ?? 0),
+      ),
+    );
+    return CurrentPointModel(
+      accelerometer: _calculateMidVolumeModel(accelerometer, accelerometerList.length),
+      userAccelerometer: _calculateMidVolumeModel(userAccelerometer, userAccelerometerList.length),
+      gyroscope: _calculateMidVolumeModel(gyroscope, gyroscopeList.length),
+      magnetometer: _calculateMidVolumeModel(magnetometer, magnetometerList.length),
+    );
+  }
+
+  VolumeModel _calculateMidVolumeModel(VolumeModel p, int number) {
+    return VolumeModel(
+      x: (p.x ?? 0) / number,
+      y: (p.y ?? 0) / number,
+      z: (p.z ?? 0) / number,
+    );
+  }
 
   TruckListener? get _deps => _state.context.findAncestorStateOfType<TruckListener>();
 
   @override
   Future<void> dispose() {
-    _timer?.cancel();
+    _ticker?.dispose();
     return super.dispose();
   }
 }

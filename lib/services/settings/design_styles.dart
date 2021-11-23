@@ -1,7 +1,9 @@
 import '../settings.dart';
 
 class DesignStyles {
-  static Color colorRed = const Color(0xFFFF0000);
+  static Color red = const Color(0xFFFF0000);
+
+  static Color black = const Color(0xFF000000);
 
   static Color colorLight = const Color(0xFFdcdcdc);
 
@@ -18,17 +20,17 @@ class DesignStyles {
   static BorderRadiusGeometry borderRadiusButton = BorderRadius.circular(5);
 
   static void changeTheme(AppTheme theme) {
-    colorLight = _colorLight[theme] ?? colorRed;
+    colorLight = _colorLight[theme] ?? red;
 
-    colorDark = _colorDark[theme] ?? colorRed;
+    colorDark = _colorDark[theme] ?? red;
 
-    transparent = _transparent[theme] ?? colorRed;
+    transparent = _transparent[theme] ?? red;
 
-    colorMiddle = _colorMiddle[theme] ?? colorRed;
+    colorMiddle = _colorMiddle[theme] ?? red;
 
-    colorVariate = _colorVariate[theme] ?? colorRed;
+    colorVariate = _colorVariate[theme] ?? red;
 
-    colorVariateDark = _colorVariateDark[theme] ?? colorRed;
+    colorVariateDark = _colorVariateDark[theme] ?? red;
   }
 
   static String fontFamily = 'Nunito';
@@ -141,7 +143,7 @@ class DesignStyles {
       content: Text(
         isUpperCase ? message : message,
         style: textCustom(
-          color: colorText ?? colorRed,
+          color: colorText ?? red,
           fontSize: 16,
         ),
         textAlign: TextAlign.center,

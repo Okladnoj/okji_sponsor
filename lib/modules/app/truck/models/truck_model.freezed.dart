@@ -13,134 +13,148 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TruckModelResponse _$TruckModelResponseFromJson(Map<String, dynamic> json) {
-  return _TruckModelResponse.fromJson(json);
+TruckModel _$TruckModelFromJson(Map<String, dynamic> json) {
+  return _TruckModel.fromJson(json);
 }
 
 /// @nodoc
-class _$TruckModelResponseTearOff {
-  const _$TruckModelResponseTearOff();
+class _$TruckModelTearOff {
+  const _$TruckModelTearOff();
 
-  _TruckModelResponse call(
-      {@JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<SessionModel?>? listSession}) {
-    return _TruckModelResponse(
-      code: code,
-      message: message,
-      listSession: listSession,
+  _TruckModel call(
+      {@JsonKey(name: 'currentPoint') CurrentPointModel? currentPoint,
+      @JsonKey(name: 'currentPoints') List<CurrentPointModel?>? currentPoints,
+      @JsonKey(name: 'midPoints') List<CurrentPointModel?>? midPoints}) {
+    return _TruckModel(
+      currentPoint: currentPoint,
+      currentPoints: currentPoints,
+      midPoints: midPoints,
     );
   }
 
-  TruckModelResponse fromJson(Map<String, Object?> json) {
-    return TruckModelResponse.fromJson(json);
+  TruckModel fromJson(Map<String, Object?> json) {
+    return TruckModel.fromJson(json);
   }
 }
 
 /// @nodoc
-const $TruckModelResponse = _$TruckModelResponseTearOff();
+const $TruckModel = _$TruckModelTearOff();
 
 /// @nodoc
-mixin _$TruckModelResponse {
-  @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
-  @JsonKey(name: 'message')
-  String? get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'data')
-  List<SessionModel?>? get listSession => throw _privateConstructorUsedError;
+mixin _$TruckModel {
+  @JsonKey(name: 'currentPoint')
+  CurrentPointModel? get currentPoint => throw _privateConstructorUsedError;
+  @JsonKey(name: 'currentPoints')
+  List<CurrentPointModel?>? get currentPoints =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'midPoints')
+  List<CurrentPointModel?>? get midPoints => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TruckModelResponseCopyWith<TruckModelResponse> get copyWith =>
+  $TruckModelCopyWith<TruckModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TruckModelResponseCopyWith<$Res> {
-  factory $TruckModelResponseCopyWith(
-          TruckModelResponse value, $Res Function(TruckModelResponse) then) =
-      _$TruckModelResponseCopyWithImpl<$Res>;
+abstract class $TruckModelCopyWith<$Res> {
+  factory $TruckModelCopyWith(
+          TruckModel value, $Res Function(TruckModel) then) =
+      _$TruckModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<SessionModel?>? listSession});
+      {@JsonKey(name: 'currentPoint') CurrentPointModel? currentPoint,
+      @JsonKey(name: 'currentPoints') List<CurrentPointModel?>? currentPoints,
+      @JsonKey(name: 'midPoints') List<CurrentPointModel?>? midPoints});
+
+  $CurrentPointModelCopyWith<$Res>? get currentPoint;
 }
 
 /// @nodoc
-class _$TruckModelResponseCopyWithImpl<$Res>
-    implements $TruckModelResponseCopyWith<$Res> {
-  _$TruckModelResponseCopyWithImpl(this._value, this._then);
+class _$TruckModelCopyWithImpl<$Res> implements $TruckModelCopyWith<$Res> {
+  _$TruckModelCopyWithImpl(this._value, this._then);
 
-  final TruckModelResponse _value;
+  final TruckModel _value;
   // ignore: unused_field
-  final $Res Function(TruckModelResponse) _then;
+  final $Res Function(TruckModel) _then;
 
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? listSession = freezed,
+    Object? currentPoint = freezed,
+    Object? currentPoints = freezed,
+    Object? midPoints = freezed,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      listSession: listSession == freezed
-          ? _value.listSession
-          : listSession // ignore: cast_nullable_to_non_nullable
-              as List<SessionModel?>?,
+      currentPoint: currentPoint == freezed
+          ? _value.currentPoint
+          : currentPoint // ignore: cast_nullable_to_non_nullable
+              as CurrentPointModel?,
+      currentPoints: currentPoints == freezed
+          ? _value.currentPoints
+          : currentPoints // ignore: cast_nullable_to_non_nullable
+              as List<CurrentPointModel?>?,
+      midPoints: midPoints == freezed
+          ? _value.midPoints
+          : midPoints // ignore: cast_nullable_to_non_nullable
+              as List<CurrentPointModel?>?,
     ));
+  }
+
+  @override
+  $CurrentPointModelCopyWith<$Res>? get currentPoint {
+    if (_value.currentPoint == null) {
+      return null;
+    }
+
+    return $CurrentPointModelCopyWith<$Res>(_value.currentPoint!, (value) {
+      return _then(_value.copyWith(currentPoint: value));
+    });
   }
 }
 
 /// @nodoc
-abstract class _$TruckModelResponseCopyWith<$Res>
-    implements $TruckModelResponseCopyWith<$Res> {
-  factory _$TruckModelResponseCopyWith(
-          _TruckModelResponse value, $Res Function(_TruckModelResponse) then) =
-      __$TruckModelResponseCopyWithImpl<$Res>;
+abstract class _$TruckModelCopyWith<$Res> implements $TruckModelCopyWith<$Res> {
+  factory _$TruckModelCopyWith(
+          _TruckModel value, $Res Function(_TruckModel) then) =
+      __$TruckModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'data') List<SessionModel?>? listSession});
+      {@JsonKey(name: 'currentPoint') CurrentPointModel? currentPoint,
+      @JsonKey(name: 'currentPoints') List<CurrentPointModel?>? currentPoints,
+      @JsonKey(name: 'midPoints') List<CurrentPointModel?>? midPoints});
+
+  @override
+  $CurrentPointModelCopyWith<$Res>? get currentPoint;
 }
 
 /// @nodoc
-class __$TruckModelResponseCopyWithImpl<$Res>
-    extends _$TruckModelResponseCopyWithImpl<$Res>
-    implements _$TruckModelResponseCopyWith<$Res> {
-  __$TruckModelResponseCopyWithImpl(
-      _TruckModelResponse _value, $Res Function(_TruckModelResponse) _then)
-      : super(_value, (v) => _then(v as _TruckModelResponse));
+class __$TruckModelCopyWithImpl<$Res> extends _$TruckModelCopyWithImpl<$Res>
+    implements _$TruckModelCopyWith<$Res> {
+  __$TruckModelCopyWithImpl(
+      _TruckModel _value, $Res Function(_TruckModel) _then)
+      : super(_value, (v) => _then(v as _TruckModel));
 
   @override
-  _TruckModelResponse get _value => super._value as _TruckModelResponse;
+  _TruckModel get _value => super._value as _TruckModel;
 
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? listSession = freezed,
+    Object? currentPoint = freezed,
+    Object? currentPoints = freezed,
+    Object? midPoints = freezed,
   }) {
-    return _then(_TruckModelResponse(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      listSession: listSession == freezed
-          ? _value.listSession
-          : listSession // ignore: cast_nullable_to_non_nullable
-              as List<SessionModel?>?,
+    return _then(_TruckModel(
+      currentPoint: currentPoint == freezed
+          ? _value.currentPoint
+          : currentPoint // ignore: cast_nullable_to_non_nullable
+              as CurrentPointModel?,
+      currentPoints: currentPoints == freezed
+          ? _value.currentPoints
+          : currentPoints // ignore: cast_nullable_to_non_nullable
+              as List<CurrentPointModel?>?,
+      midPoints: midPoints == freezed
+          ? _value.midPoints
+          : midPoints // ignore: cast_nullable_to_non_nullable
+              as List<CurrentPointModel?>?,
     ));
   }
 }
@@ -148,618 +162,289 @@ class __$TruckModelResponseCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
-class _$_TruckModelResponse implements _TruckModelResponse {
-  const _$_TruckModelResponse(
-      {@JsonKey(name: 'code') this.code,
-      @JsonKey(name: 'message') this.message,
-      @JsonKey(name: 'data') this.listSession});
+class _$_TruckModel implements _TruckModel {
+  const _$_TruckModel(
+      {@JsonKey(name: 'currentPoint') this.currentPoint,
+      @JsonKey(name: 'currentPoints') this.currentPoints,
+      @JsonKey(name: 'midPoints') this.midPoints});
 
-  factory _$_TruckModelResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_TruckModelResponseFromJson(json);
+  factory _$_TruckModel.fromJson(Map<String, dynamic> json) =>
+      _$$_TruckModelFromJson(json);
 
   @override
-  @JsonKey(name: 'code')
-  final int? code;
+  @JsonKey(name: 'currentPoint')
+  final CurrentPointModel? currentPoint;
   @override
-  @JsonKey(name: 'message')
-  final String? message;
+  @JsonKey(name: 'currentPoints')
+  final List<CurrentPointModel?>? currentPoints;
   @override
-  @JsonKey(name: 'data')
-  final List<SessionModel?>? listSession;
+  @JsonKey(name: 'midPoints')
+  final List<CurrentPointModel?>? midPoints;
 
   @override
   String toString() {
-    return 'TruckModelResponse(code: $code, message: $message, listSession: $listSession)';
+    return 'TruckModel(currentPoint: $currentPoint, currentPoints: $currentPoints, midPoints: $midPoints)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TruckModelResponse &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
+            other is _TruckModel &&
+            (identical(other.currentPoint, currentPoint) ||
+                other.currentPoint == currentPoint) &&
             const DeepCollectionEquality()
-                .equals(other.listSession, listSession));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, code, message,
-      const DeepCollectionEquality().hash(listSession));
-
-  @JsonKey(ignore: true)
-  @override
-  _$TruckModelResponseCopyWith<_TruckModelResponse> get copyWith =>
-      __$TruckModelResponseCopyWithImpl<_TruckModelResponse>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_TruckModelResponseToJson(this);
-  }
-}
-
-abstract class _TruckModelResponse implements TruckModelResponse {
-  const factory _TruckModelResponse(
-          {@JsonKey(name: 'code') int? code,
-          @JsonKey(name: 'message') String? message,
-          @JsonKey(name: 'data') List<SessionModel?>? listSession}) =
-      _$_TruckModelResponse;
-
-  factory _TruckModelResponse.fromJson(Map<String, dynamic> json) =
-      _$_TruckModelResponse.fromJson;
-
-  @override
-  @JsonKey(name: 'code')
-  int? get code;
-  @override
-  @JsonKey(name: 'message')
-  String? get message;
-  @override
-  @JsonKey(name: 'data')
-  List<SessionModel?>? get listSession;
-  @override
-  @JsonKey(ignore: true)
-  _$TruckModelResponseCopyWith<_TruckModelResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SessionModel _$SessionModelFromJson(Map<String, dynamic> json) {
-  return _SessionModel.fromJson(json);
-}
-
-/// @nodoc
-class _$SessionModelTearOff {
-  const _$SessionModelTearOff();
-
-  _SessionModel call(
-      {@JsonKey(name: 'uuid')
-          String? uuid,
-      @JsonKey(name: 'name')
-          String? name,
-      @JsonKey(name: 'status')
-          String? status,
-      @JsonKey(name: 'users')
-          List<UserModel?>? users,
-      @JsonKey(name: 'protected')
-          bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? expiredAt,
-      @JsonKey(name: 'pinCode')
-          String? pinCode}) {
-    return _SessionModel(
-      uuid: uuid,
-      name: name,
-      status: status,
-      users: users,
-      protected: protected,
-      createdAt: createdAt,
-      expiredAt: expiredAt,
-      pinCode: pinCode,
-    );
-  }
-
-  SessionModel fromJson(Map<String, Object?> json) {
-    return SessionModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SessionModel = _$SessionModelTearOff();
-
-/// @nodoc
-mixin _$SessionModel {
-  @JsonKey(name: 'uuid')
-  String? get uuid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'status')
-  String? get status => throw _privateConstructorUsedError;
-  @JsonKey(name: 'users')
-  List<UserModel?>? get users => throw _privateConstructorUsedError;
-  @JsonKey(name: 'protected')
-  bool? get protected => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-  DateTime? get expiredAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'pinCode')
-  String? get pinCode => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SessionModelCopyWith<SessionModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SessionModelCopyWith<$Res> {
-  factory $SessionModelCopyWith(
-          SessionModel value, $Res Function(SessionModel) then) =
-      _$SessionModelCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'uuid')
-          String? uuid,
-      @JsonKey(name: 'name')
-          String? name,
-      @JsonKey(name: 'status')
-          String? status,
-      @JsonKey(name: 'users')
-          List<UserModel?>? users,
-      @JsonKey(name: 'protected')
-          bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? expiredAt,
-      @JsonKey(name: 'pinCode')
-          String? pinCode});
-}
-
-/// @nodoc
-class _$SessionModelCopyWithImpl<$Res> implements $SessionModelCopyWith<$Res> {
-  _$SessionModelCopyWithImpl(this._value, this._then);
-
-  final SessionModel _value;
-  // ignore: unused_field
-  final $Res Function(SessionModel) _then;
-
-  @override
-  $Res call({
-    Object? uuid = freezed,
-    Object? name = freezed,
-    Object? status = freezed,
-    Object? users = freezed,
-    Object? protected = freezed,
-    Object? createdAt = freezed,
-    Object? expiredAt = freezed,
-    Object? pinCode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      uuid: uuid == freezed
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      users: users == freezed
-          ? _value.users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel?>?,
-      protected: protected == freezed
-          ? _value.protected
-          : protected // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      expiredAt: expiredAt == freezed
-          ? _value.expiredAt
-          : expiredAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      pinCode: pinCode == freezed
-          ? _value.pinCode
-          : pinCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$SessionModelCopyWith<$Res>
-    implements $SessionModelCopyWith<$Res> {
-  factory _$SessionModelCopyWith(
-          _SessionModel value, $Res Function(_SessionModel) then) =
-      __$SessionModelCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {@JsonKey(name: 'uuid')
-          String? uuid,
-      @JsonKey(name: 'name')
-          String? name,
-      @JsonKey(name: 'status')
-          String? status,
-      @JsonKey(name: 'users')
-          List<UserModel?>? users,
-      @JsonKey(name: 'protected')
-          bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? expiredAt,
-      @JsonKey(name: 'pinCode')
-          String? pinCode});
-}
-
-/// @nodoc
-class __$SessionModelCopyWithImpl<$Res> extends _$SessionModelCopyWithImpl<$Res>
-    implements _$SessionModelCopyWith<$Res> {
-  __$SessionModelCopyWithImpl(
-      _SessionModel _value, $Res Function(_SessionModel) _then)
-      : super(_value, (v) => _then(v as _SessionModel));
-
-  @override
-  _SessionModel get _value => super._value as _SessionModel;
-
-  @override
-  $Res call({
-    Object? uuid = freezed,
-    Object? name = freezed,
-    Object? status = freezed,
-    Object? users = freezed,
-    Object? protected = freezed,
-    Object? createdAt = freezed,
-    Object? expiredAt = freezed,
-    Object? pinCode = freezed,
-  }) {
-    return _then(_SessionModel(
-      uuid: uuid == freezed
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      users: users == freezed
-          ? _value.users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel?>?,
-      protected: protected == freezed
-          ? _value.protected
-          : protected // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      expiredAt: expiredAt == freezed
-          ? _value.expiredAt
-          : expiredAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      pinCode: pinCode == freezed
-          ? _value.pinCode
-          : pinCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(explicitToJson: true, includeIfNull: true)
-class _$_SessionModel implements _SessionModel {
-  const _$_SessionModel(
-      {@JsonKey(name: 'uuid')
-          this.uuid,
-      @JsonKey(name: 'name')
-          this.name,
-      @JsonKey(name: 'status')
-          this.status,
-      @JsonKey(name: 'users')
-          this.users,
-      @JsonKey(name: 'protected')
-          this.protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-          this.createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-          this.expiredAt,
-      @JsonKey(name: 'pinCode')
-          this.pinCode});
-
-  factory _$_SessionModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SessionModelFromJson(json);
-
-  @override
-  @JsonKey(name: 'uuid')
-  final String? uuid;
-  @override
-  @JsonKey(name: 'name')
-  final String? name;
-  @override
-  @JsonKey(name: 'status')
-  final String? status;
-  @override
-  @JsonKey(name: 'users')
-  final List<UserModel?>? users;
-  @override
-  @JsonKey(name: 'protected')
-  final bool? protected;
-  @override
-  @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-  final DateTime? createdAt;
-  @override
-  @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-  final DateTime? expiredAt;
-  @override
-  @JsonKey(name: 'pinCode')
-  final String? pinCode;
-
-  @override
-  String toString() {
-    return 'SessionModel(uuid: $uuid, name: $name, status: $status, users: $users, protected: $protected, createdAt: $createdAt, expiredAt: $expiredAt, pinCode: $pinCode)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _SessionModel &&
-            (identical(other.uuid, uuid) || other.uuid == uuid) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other.users, users) &&
-            (identical(other.protected, protected) ||
-                other.protected == protected) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.expiredAt, expiredAt) ||
-                other.expiredAt == expiredAt) &&
-            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+                .equals(other.currentPoints, currentPoints) &&
+            const DeepCollectionEquality().equals(other.midPoints, midPoints));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      uuid,
-      name,
-      status,
-      const DeepCollectionEquality().hash(users),
-      protected,
-      createdAt,
-      expiredAt,
-      pinCode);
+      currentPoint,
+      const DeepCollectionEquality().hash(currentPoints),
+      const DeepCollectionEquality().hash(midPoints));
 
   @JsonKey(ignore: true)
   @override
-  _$SessionModelCopyWith<_SessionModel> get copyWith =>
-      __$SessionModelCopyWithImpl<_SessionModel>(this, _$identity);
+  _$TruckModelCopyWith<_TruckModel> get copyWith =>
+      __$TruckModelCopyWithImpl<_TruckModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SessionModelToJson(this);
+    return _$$_TruckModelToJson(this);
   }
 }
 
-abstract class _SessionModel implements SessionModel {
-  const factory _SessionModel(
-      {@JsonKey(name: 'uuid')
-          String? uuid,
-      @JsonKey(name: 'name')
-          String? name,
-      @JsonKey(name: 'status')
-          String? status,
-      @JsonKey(name: 'users')
-          List<UserModel?>? users,
-      @JsonKey(name: 'protected')
-          bool? protected,
-      @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? createdAt,
-      @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-          DateTime? expiredAt,
-      @JsonKey(name: 'pinCode')
-          String? pinCode}) = _$_SessionModel;
+abstract class _TruckModel implements TruckModel {
+  const factory _TruckModel(
+      {@JsonKey(name: 'currentPoint')
+          CurrentPointModel? currentPoint,
+      @JsonKey(name: 'currentPoints')
+          List<CurrentPointModel?>? currentPoints,
+      @JsonKey(name: 'midPoints')
+          List<CurrentPointModel?>? midPoints}) = _$_TruckModel;
 
-  factory _SessionModel.fromJson(Map<String, dynamic> json) =
-      _$_SessionModel.fromJson;
+  factory _TruckModel.fromJson(Map<String, dynamic> json) =
+      _$_TruckModel.fromJson;
 
   @override
-  @JsonKey(name: 'uuid')
-  String? get uuid;
+  @JsonKey(name: 'currentPoint')
+  CurrentPointModel? get currentPoint;
   @override
-  @JsonKey(name: 'name')
-  String? get name;
+  @JsonKey(name: 'currentPoints')
+  List<CurrentPointModel?>? get currentPoints;
   @override
-  @JsonKey(name: 'status')
-  String? get status;
-  @override
-  @JsonKey(name: 'users')
-  List<UserModel?>? get users;
-  @override
-  @JsonKey(name: 'protected')
-  bool? get protected;
-  @override
-  @JsonKey(name: 'created_at', fromJson: JsonParser.stringToDateTime)
-  DateTime? get createdAt;
-  @override
-  @JsonKey(name: 'expired_at', fromJson: JsonParser.stringToDateTime)
-  DateTime? get expiredAt;
-  @override
-  @JsonKey(name: 'pinCode')
-  String? get pinCode;
+  @JsonKey(name: 'midPoints')
+  List<CurrentPointModel?>? get midPoints;
   @override
   @JsonKey(ignore: true)
-  _$SessionModelCopyWith<_SessionModel> get copyWith =>
+  _$TruckModelCopyWith<_TruckModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-UserModel _$UserModelFromJson(Map<String, dynamic> json) {
-  return _UserModel.fromJson(json);
+CurrentPointModel _$CurrentPointModelFromJson(Map<String, dynamic> json) {
+  return _CurrentPointModel.fromJson(json);
 }
 
 /// @nodoc
-class _$UserModelTearOff {
-  const _$UserModelTearOff();
+class _$CurrentPointModelTearOff {
+  const _$CurrentPointModelTearOff();
 
-  _UserModel call(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'scores') int? scores,
-      @JsonKey(name: 'created_at') String? createdAt}) {
-    return _UserModel(
-      uuid: uuid,
-      name: name,
-      email: email,
-      scores: scores,
-      createdAt: createdAt,
+  _CurrentPointModel call(
+      {@JsonKey(name: 'accelerometer') VolumeModel? accelerometer,
+      @JsonKey(name: 'userAccelerometer') VolumeModel? userAccelerometer,
+      @JsonKey(name: 'gyroscope') VolumeModel? gyroscope,
+      @JsonKey(name: 'magnetometer') VolumeModel? magnetometer}) {
+    return _CurrentPointModel(
+      accelerometer: accelerometer,
+      userAccelerometer: userAccelerometer,
+      gyroscope: gyroscope,
+      magnetometer: magnetometer,
     );
   }
 
-  UserModel fromJson(Map<String, Object?> json) {
-    return UserModel.fromJson(json);
+  CurrentPointModel fromJson(Map<String, Object?> json) {
+    return CurrentPointModel.fromJson(json);
   }
 }
 
 /// @nodoc
-const $UserModel = _$UserModelTearOff();
+const $CurrentPointModel = _$CurrentPointModelTearOff();
 
 /// @nodoc
-mixin _$UserModel {
-  @JsonKey(name: 'uuid')
-  String? get uuid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'email')
-  String? get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'scores')
-  int? get scores => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
-  String? get createdAt => throw _privateConstructorUsedError;
+mixin _$CurrentPointModel {
+  @JsonKey(name: 'accelerometer')
+  VolumeModel? get accelerometer => throw _privateConstructorUsedError;
+  @JsonKey(name: 'userAccelerometer')
+  VolumeModel? get userAccelerometer => throw _privateConstructorUsedError;
+  @JsonKey(name: 'gyroscope')
+  VolumeModel? get gyroscope => throw _privateConstructorUsedError;
+  @JsonKey(name: 'magnetometer')
+  VolumeModel? get magnetometer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserModelCopyWith<UserModel> get copyWith =>
+  $CurrentPointModelCopyWith<CurrentPointModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserModelCopyWith<$Res> {
-  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
-      _$UserModelCopyWithImpl<$Res>;
+abstract class $CurrentPointModelCopyWith<$Res> {
+  factory $CurrentPointModelCopyWith(
+          CurrentPointModel value, $Res Function(CurrentPointModel) then) =
+      _$CurrentPointModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'scores') int? scores,
-      @JsonKey(name: 'created_at') String? createdAt});
+      {@JsonKey(name: 'accelerometer') VolumeModel? accelerometer,
+      @JsonKey(name: 'userAccelerometer') VolumeModel? userAccelerometer,
+      @JsonKey(name: 'gyroscope') VolumeModel? gyroscope,
+      @JsonKey(name: 'magnetometer') VolumeModel? magnetometer});
+
+  $VolumeModelCopyWith<$Res>? get accelerometer;
+  $VolumeModelCopyWith<$Res>? get userAccelerometer;
+  $VolumeModelCopyWith<$Res>? get gyroscope;
+  $VolumeModelCopyWith<$Res>? get magnetometer;
 }
 
 /// @nodoc
-class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
-  _$UserModelCopyWithImpl(this._value, this._then);
+class _$CurrentPointModelCopyWithImpl<$Res>
+    implements $CurrentPointModelCopyWith<$Res> {
+  _$CurrentPointModelCopyWithImpl(this._value, this._then);
 
-  final UserModel _value;
+  final CurrentPointModel _value;
   // ignore: unused_field
-  final $Res Function(UserModel) _then;
+  final $Res Function(CurrentPointModel) _then;
 
   @override
   $Res call({
-    Object? uuid = freezed,
-    Object? name = freezed,
-    Object? email = freezed,
-    Object? scores = freezed,
-    Object? createdAt = freezed,
+    Object? accelerometer = freezed,
+    Object? userAccelerometer = freezed,
+    Object? gyroscope = freezed,
+    Object? magnetometer = freezed,
   }) {
     return _then(_value.copyWith(
-      uuid: uuid == freezed
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      scores: scores == freezed
-          ? _value.scores
-          : scores // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+      accelerometer: accelerometer == freezed
+          ? _value.accelerometer
+          : accelerometer // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
+      userAccelerometer: userAccelerometer == freezed
+          ? _value.userAccelerometer
+          : userAccelerometer // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
+      gyroscope: gyroscope == freezed
+          ? _value.gyroscope
+          : gyroscope // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
+      magnetometer: magnetometer == freezed
+          ? _value.magnetometer
+          : magnetometer // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
     ));
+  }
+
+  @override
+  $VolumeModelCopyWith<$Res>? get accelerometer {
+    if (_value.accelerometer == null) {
+      return null;
+    }
+
+    return $VolumeModelCopyWith<$Res>(_value.accelerometer!, (value) {
+      return _then(_value.copyWith(accelerometer: value));
+    });
+  }
+
+  @override
+  $VolumeModelCopyWith<$Res>? get userAccelerometer {
+    if (_value.userAccelerometer == null) {
+      return null;
+    }
+
+    return $VolumeModelCopyWith<$Res>(_value.userAccelerometer!, (value) {
+      return _then(_value.copyWith(userAccelerometer: value));
+    });
+  }
+
+  @override
+  $VolumeModelCopyWith<$Res>? get gyroscope {
+    if (_value.gyroscope == null) {
+      return null;
+    }
+
+    return $VolumeModelCopyWith<$Res>(_value.gyroscope!, (value) {
+      return _then(_value.copyWith(gyroscope: value));
+    });
+  }
+
+  @override
+  $VolumeModelCopyWith<$Res>? get magnetometer {
+    if (_value.magnetometer == null) {
+      return null;
+    }
+
+    return $VolumeModelCopyWith<$Res>(_value.magnetometer!, (value) {
+      return _then(_value.copyWith(magnetometer: value));
+    });
   }
 }
 
 /// @nodoc
-abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
-  factory _$UserModelCopyWith(
-          _UserModel value, $Res Function(_UserModel) then) =
-      __$UserModelCopyWithImpl<$Res>;
+abstract class _$CurrentPointModelCopyWith<$Res>
+    implements $CurrentPointModelCopyWith<$Res> {
+  factory _$CurrentPointModelCopyWith(
+          _CurrentPointModel value, $Res Function(_CurrentPointModel) then) =
+      __$CurrentPointModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'scores') int? scores,
-      @JsonKey(name: 'created_at') String? createdAt});
+      {@JsonKey(name: 'accelerometer') VolumeModel? accelerometer,
+      @JsonKey(name: 'userAccelerometer') VolumeModel? userAccelerometer,
+      @JsonKey(name: 'gyroscope') VolumeModel? gyroscope,
+      @JsonKey(name: 'magnetometer') VolumeModel? magnetometer});
+
+  @override
+  $VolumeModelCopyWith<$Res>? get accelerometer;
+  @override
+  $VolumeModelCopyWith<$Res>? get userAccelerometer;
+  @override
+  $VolumeModelCopyWith<$Res>? get gyroscope;
+  @override
+  $VolumeModelCopyWith<$Res>? get magnetometer;
 }
 
 /// @nodoc
-class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
-    implements _$UserModelCopyWith<$Res> {
-  __$UserModelCopyWithImpl(_UserModel _value, $Res Function(_UserModel) _then)
-      : super(_value, (v) => _then(v as _UserModel));
+class __$CurrentPointModelCopyWithImpl<$Res>
+    extends _$CurrentPointModelCopyWithImpl<$Res>
+    implements _$CurrentPointModelCopyWith<$Res> {
+  __$CurrentPointModelCopyWithImpl(
+      _CurrentPointModel _value, $Res Function(_CurrentPointModel) _then)
+      : super(_value, (v) => _then(v as _CurrentPointModel));
 
   @override
-  _UserModel get _value => super._value as _UserModel;
+  _CurrentPointModel get _value => super._value as _CurrentPointModel;
 
   @override
   $Res call({
-    Object? uuid = freezed,
-    Object? name = freezed,
-    Object? email = freezed,
-    Object? scores = freezed,
-    Object? createdAt = freezed,
+    Object? accelerometer = freezed,
+    Object? userAccelerometer = freezed,
+    Object? gyroscope = freezed,
+    Object? magnetometer = freezed,
   }) {
-    return _then(_UserModel(
-      uuid: uuid == freezed
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      scores: scores == freezed
-          ? _value.scores
-          : scores // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_CurrentPointModel(
+      accelerometer: accelerometer == freezed
+          ? _value.accelerometer
+          : accelerometer // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
+      userAccelerometer: userAccelerometer == freezed
+          ? _value.userAccelerometer
+          : userAccelerometer // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
+      gyroscope: gyroscope == freezed
+          ? _value.gyroscope
+          : gyroscope // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
+      magnetometer: magnetometer == freezed
+          ? _value.magnetometer
+          : magnetometer // ignore: cast_nullable_to_non_nullable
+              as VolumeModel?,
     ));
   }
 }
@@ -767,94 +452,296 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: true)
-class _$_UserModel implements _UserModel {
-  const _$_UserModel(
-      {@JsonKey(name: 'uuid') this.uuid,
-      @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'email') this.email,
-      @JsonKey(name: 'scores') this.scores,
-      @JsonKey(name: 'created_at') this.createdAt});
+class _$_CurrentPointModel implements _CurrentPointModel {
+  const _$_CurrentPointModel(
+      {@JsonKey(name: 'accelerometer') this.accelerometer,
+      @JsonKey(name: 'userAccelerometer') this.userAccelerometer,
+      @JsonKey(name: 'gyroscope') this.gyroscope,
+      @JsonKey(name: 'magnetometer') this.magnetometer});
 
-  factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
-      _$$_UserModelFromJson(json);
+  factory _$_CurrentPointModel.fromJson(Map<String, dynamic> json) =>
+      _$$_CurrentPointModelFromJson(json);
 
   @override
-  @JsonKey(name: 'uuid')
-  final String? uuid;
+  @JsonKey(name: 'accelerometer')
+  final VolumeModel? accelerometer;
   @override
-  @JsonKey(name: 'name')
-  final String? name;
+  @JsonKey(name: 'userAccelerometer')
+  final VolumeModel? userAccelerometer;
   @override
-  @JsonKey(name: 'email')
-  final String? email;
+  @JsonKey(name: 'gyroscope')
+  final VolumeModel? gyroscope;
   @override
-  @JsonKey(name: 'scores')
-  final int? scores;
-  @override
-  @JsonKey(name: 'created_at')
-  final String? createdAt;
+  @JsonKey(name: 'magnetometer')
+  final VolumeModel? magnetometer;
 
   @override
   String toString() {
-    return 'UserModel(uuid: $uuid, name: $name, email: $email, scores: $scores, createdAt: $createdAt)';
+    return 'CurrentPointModel(accelerometer: $accelerometer, userAccelerometer: $userAccelerometer, gyroscope: $gyroscope, magnetometer: $magnetometer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserModel &&
-            (identical(other.uuid, uuid) || other.uuid == uuid) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.scores, scores) || other.scores == scores) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            other is _CurrentPointModel &&
+            (identical(other.accelerometer, accelerometer) ||
+                other.accelerometer == accelerometer) &&
+            (identical(other.userAccelerometer, userAccelerometer) ||
+                other.userAccelerometer == userAccelerometer) &&
+            (identical(other.gyroscope, gyroscope) ||
+                other.gyroscope == gyroscope) &&
+            (identical(other.magnetometer, magnetometer) ||
+                other.magnetometer == magnetometer));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uuid, name, email, scores, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, accelerometer, userAccelerometer, gyroscope, magnetometer);
 
   @JsonKey(ignore: true)
   @override
-  _$UserModelCopyWith<_UserModel> get copyWith =>
-      __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
+  _$CurrentPointModelCopyWith<_CurrentPointModel> get copyWith =>
+      __$CurrentPointModelCopyWithImpl<_CurrentPointModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserModelToJson(this);
+    return _$$_CurrentPointModelToJson(this);
   }
 }
 
-abstract class _UserModel implements UserModel {
-  const factory _UserModel(
-      {@JsonKey(name: 'uuid') String? uuid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'scores') int? scores,
-      @JsonKey(name: 'created_at') String? createdAt}) = _$_UserModel;
+abstract class _CurrentPointModel implements CurrentPointModel {
+  const factory _CurrentPointModel(
+          {@JsonKey(name: 'accelerometer') VolumeModel? accelerometer,
+          @JsonKey(name: 'userAccelerometer') VolumeModel? userAccelerometer,
+          @JsonKey(name: 'gyroscope') VolumeModel? gyroscope,
+          @JsonKey(name: 'magnetometer') VolumeModel? magnetometer}) =
+      _$_CurrentPointModel;
 
-  factory _UserModel.fromJson(Map<String, dynamic> json) =
-      _$_UserModel.fromJson;
+  factory _CurrentPointModel.fromJson(Map<String, dynamic> json) =
+      _$_CurrentPointModel.fromJson;
 
   @override
-  @JsonKey(name: 'uuid')
-  String? get uuid;
+  @JsonKey(name: 'accelerometer')
+  VolumeModel? get accelerometer;
   @override
-  @JsonKey(name: 'name')
-  String? get name;
+  @JsonKey(name: 'userAccelerometer')
+  VolumeModel? get userAccelerometer;
   @override
-  @JsonKey(name: 'email')
-  String? get email;
+  @JsonKey(name: 'gyroscope')
+  VolumeModel? get gyroscope;
   @override
-  @JsonKey(name: 'scores')
-  int? get scores;
-  @override
-  @JsonKey(name: 'created_at')
-  String? get createdAt;
+  @JsonKey(name: 'magnetometer')
+  VolumeModel? get magnetometer;
   @override
   @JsonKey(ignore: true)
-  _$UserModelCopyWith<_UserModel> get copyWith =>
+  _$CurrentPointModelCopyWith<_CurrentPointModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+VolumeModel _$VolumeModelFromJson(Map<String, dynamic> json) {
+  return _VolumeModel.fromJson(json);
+}
+
+/// @nodoc
+class _$VolumeModelTearOff {
+  const _$VolumeModelTearOff();
+
+  _VolumeModel call(
+      {@JsonKey(name: 'x') double? x,
+      @JsonKey(name: 'y') double? y,
+      @JsonKey(name: 'z') double? z}) {
+    return _VolumeModel(
+      x: x,
+      y: y,
+      z: z,
+    );
+  }
+
+  VolumeModel fromJson(Map<String, Object?> json) {
+    return VolumeModel.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $VolumeModel = _$VolumeModelTearOff();
+
+/// @nodoc
+mixin _$VolumeModel {
+  @JsonKey(name: 'x')
+  double? get x => throw _privateConstructorUsedError;
+  @JsonKey(name: 'y')
+  double? get y => throw _privateConstructorUsedError;
+  @JsonKey(name: 'z')
+  double? get z => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VolumeModelCopyWith<VolumeModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VolumeModelCopyWith<$Res> {
+  factory $VolumeModelCopyWith(
+          VolumeModel value, $Res Function(VolumeModel) then) =
+      _$VolumeModelCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'x') double? x,
+      @JsonKey(name: 'y') double? y,
+      @JsonKey(name: 'z') double? z});
+}
+
+/// @nodoc
+class _$VolumeModelCopyWithImpl<$Res> implements $VolumeModelCopyWith<$Res> {
+  _$VolumeModelCopyWithImpl(this._value, this._then);
+
+  final VolumeModel _value;
+  // ignore: unused_field
+  final $Res Function(VolumeModel) _then;
+
+  @override
+  $Res call({
+    Object? x = freezed,
+    Object? y = freezed,
+    Object? z = freezed,
+  }) {
+    return _then(_value.copyWith(
+      x: x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as double?,
+      y: y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as double?,
+      z: z == freezed
+          ? _value.z
+          : z // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$VolumeModelCopyWith<$Res>
+    implements $VolumeModelCopyWith<$Res> {
+  factory _$VolumeModelCopyWith(
+          _VolumeModel value, $Res Function(_VolumeModel) then) =
+      __$VolumeModelCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: 'x') double? x,
+      @JsonKey(name: 'y') double? y,
+      @JsonKey(name: 'z') double? z});
+}
+
+/// @nodoc
+class __$VolumeModelCopyWithImpl<$Res> extends _$VolumeModelCopyWithImpl<$Res>
+    implements _$VolumeModelCopyWith<$Res> {
+  __$VolumeModelCopyWithImpl(
+      _VolumeModel _value, $Res Function(_VolumeModel) _then)
+      : super(_value, (v) => _then(v as _VolumeModel));
+
+  @override
+  _VolumeModel get _value => super._value as _VolumeModel;
+
+  @override
+  $Res call({
+    Object? x = freezed,
+    Object? y = freezed,
+    Object? z = freezed,
+  }) {
+    return _then(_VolumeModel(
+      x: x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as double?,
+      y: y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as double?,
+      z: z == freezed
+          ? _value.z
+          : z // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true, includeIfNull: true)
+class _$_VolumeModel extends _VolumeModel {
+  const _$_VolumeModel(
+      {@JsonKey(name: 'x') this.x,
+      @JsonKey(name: 'y') this.y,
+      @JsonKey(name: 'z') this.z})
+      : super._();
+
+  factory _$_VolumeModel.fromJson(Map<String, dynamic> json) =>
+      _$$_VolumeModelFromJson(json);
+
+  @override
+  @JsonKey(name: 'x')
+  final double? x;
+  @override
+  @JsonKey(name: 'y')
+  final double? y;
+  @override
+  @JsonKey(name: 'z')
+  final double? z;
+
+  @override
+  String toString() {
+    return 'VolumeModel(x: $x, y: $y, z: $z)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _VolumeModel &&
+            (identical(other.x, x) || other.x == x) &&
+            (identical(other.y, y) || other.y == y) &&
+            (identical(other.z, z) || other.z == z));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, x, y, z);
+
+  @JsonKey(ignore: true)
+  @override
+  _$VolumeModelCopyWith<_VolumeModel> get copyWith =>
+      __$VolumeModelCopyWithImpl<_VolumeModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_VolumeModelToJson(this);
+  }
+}
+
+abstract class _VolumeModel extends VolumeModel {
+  const factory _VolumeModel(
+      {@JsonKey(name: 'x') double? x,
+      @JsonKey(name: 'y') double? y,
+      @JsonKey(name: 'z') double? z}) = _$_VolumeModel;
+  const _VolumeModel._() : super._();
+
+  factory _VolumeModel.fromJson(Map<String, dynamic> json) =
+      _$_VolumeModel.fromJson;
+
+  @override
+  @JsonKey(name: 'x')
+  double? get x;
+  @override
+  @JsonKey(name: 'y')
+  double? get y;
+  @override
+  @JsonKey(name: 'z')
+  double? get z;
+  @override
+  @JsonKey(ignore: true)
+  _$VolumeModelCopyWith<_VolumeModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

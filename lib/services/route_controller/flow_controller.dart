@@ -68,13 +68,14 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
   @override
   Widget build(BuildContext context) {
     return Navigator(
-        key: _navKey,
-        observers: [_routeObserver ?? RouteObserver<Route<dynamic>>()],
-        onGenerateRoute: (s) {
-          final AppPage page = createInitialPage();
-          _navStack?.add(page.name);
-          return CupertinoPageRoute(builder: (s) => page.widget, settings: RouteSettings(name: page.name));
-        });
+      key: _navKey,
+      observers: [_routeObserver ?? RouteObserver<Route<dynamic>>()],
+      onGenerateRoute: (s) {
+        final AppPage page = createInitialPage();
+        _navStack?.add(page.name);
+        return CupertinoPageRoute(builder: (s) => page.widget, settings: RouteSettings(name: page.name));
+      },
+    );
   }
 
   Future<R?>? showErrorDialog<R>(String message) {
@@ -83,11 +84,16 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
   }
 
   Future<R?>? showDesignDialog<R>(Widget dialog, {bool isCancelable = true, String? name}) {
-    return push<R>(DialogRouteCustom<R>(
+    return push<R>(
+      DialogRouteCustom<R>(
         pageBuilder: (c, animIn, animOut) => dialog,
         isCancelable: isCancelable,
         barrierLabel: _getModalBarrierLabel(),
-        settings: RouteSettings(name: generateRouteName(name))));
+        settings: RouteSettings(
+          name: generateRouteName(name),
+        ),
+      ),
+    );
   }
 
 //  Future<R> showDesignBottomSheet<R>(DesignSheetContentBuilder builder,
@@ -121,8 +127,9 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
     if (route.settings.name == null && route is CupertinoPageRoute) {
       final CupertinoPageRoute typed = route as CupertinoPageRoute;
       newRoute = CupertinoPageRoute(
-          builder: typed.builder,
-          settings: RouteSettings(name: generateRouteName(), arguments: route.settings.arguments));
+        builder: typed.builder,
+        settings: RouteSettings(name: generateRouteName(), arguments: route.settings.arguments),
+      );
     }
     assert(newRoute.settings.name != null);
     return _navigator()?.pushAndRemoveUntil(newRoute, (route) {

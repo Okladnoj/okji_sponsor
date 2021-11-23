@@ -101,23 +101,24 @@ class _CustomDropDownState<T> extends State<CustomDropDown<T>> {
       child: Container(
         decoration: DesignStyles.buttonDecoration(
           blurRadius: 10,
-          offset: const Offset(0, 1),
         ),
         child: ListView(
           children: widget.itemsList
-              .map((e) => InkCustomSimple(
-                    onTap: () {
-                      _initialValue = e;
-                      widget.onChanged(e);
-                      setState(() {
-                        _expanded = !_expanded;
-                      });
-                    },
-                    child: SizedBox(
-                      height: widget.hightMin,
-                      child: e.listElement,
-                    ),
-                  ))
+              .map(
+                (e) => InkCustomSimple(
+                  onTap: () {
+                    _initialValue = e;
+                    widget.onChanged(e);
+                    setState(() {
+                      _expanded = !_expanded;
+                    });
+                  },
+                  child: SizedBox(
+                    height: widget.hightMin,
+                    child: e.listElement,
+                  ),
+                ),
+              )
               .toList(),
         ),
       ),

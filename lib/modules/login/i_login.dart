@@ -1,31 +1,23 @@
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
-
-import '../../modules/login/s_login.dart';
 import '../../../services/settings.dart';
-
+import '../../models/user/login_mode_iu.dart';
+import '../../models/user/login_model.dart';
+import '../../modules/login/s_login.dart';
 import 'domain/login_api.dart';
-import 'models/login_mode_iu.dart';
-import 'models/login_model.dart';
 import 'p_login.dart';
 
-class LoginInteractor with BaseInteractor<LoginModelUI> {
+class LoginInteractor with BaseInteractor<UserModelUI> {
   late final LoginPState _state;
   late final LoginApi _api;
-  LoginModel? _model;
-  SinInModel _sinInModel = const SinInModel();
+  UserModel _model = const UserModel();
 
   LoginInteractor(this._state) {
     _init();
   }
   Future<void> _init() async {
     _api = LoginApi();
-    _updateUI();
-  }
-
-  void onChangeEmail(String email) {
-    _sinInModel = _sinInModel.copyWith(email: email);
     _updateUI();
   }
 
@@ -37,12 +29,28 @@ class LoginInteractor with BaseInteractor<LoginModelUI> {
       final user = result.user;
 
       if (user != null) {
+        user.uid;
+        user.displayName;
+        user.email;
+        user.photoURL;
+        user.phoneNumber;
+        _model = _model.copyWith(
+          uid: user.uid,
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          phoneNumber: user.phoneNumber,
+        );
         AppPreference.token = user.uid;
+        AppPreference.user = _model;
+
+        final _sUser = jsonEncode(AppPreference.user.toJson());
         await AppPreferences.setString(AppPreferencesString.token, AppPreference.token);
+        await AppPreferences.setString(AppPreferencesString.user, _sUser);
         await AppPreferences.setBool(AppPreferencesBool.isLogin, true);
         _deps?.onLoginConfirm();
       } else {
-        _state.showErrorMessage('result?.message');
+        _state.showErrorMessage(result.toString());
       }
       _updateUI();
     } catch (e) {
@@ -55,18 +63,15 @@ class LoginInteractor with BaseInteractor<LoginModelUI> {
     sink.add(_mapToUI());
   }
 
-  LoginModelUI _mapToUI() => LoginModelUI(
-        _mapToUserModelUI(_model?.user),
-        _model?.token ?? '',
-        _sinInModel.email?.isNotEmpty ?? false,
-      );
-
-  UserModelUI _mapToUserModelUI(UserModel? user) => UserModelUI(
-        user?.uuid ?? '',
-        user?.kind ?? '',
-        user?.email ?? '',
-        user?.createdAt ?? '',
-      );
+  UserModelUI _mapToUI() {
+    return UserModelUI(
+      _model.uid ?? '',
+      _model.displayName ?? '',
+      _model.email ?? '',
+      _model.photoURL ?? '',
+      _model.phoneNumber ?? '',
+    );
+  }
 
   LoginListener? get _deps => _state.context.findAncestorStateOfType<LoginListener>();
 }

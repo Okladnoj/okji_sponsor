@@ -131,11 +131,11 @@ class ScreenFormer extends StatelessWidget {
 
   Widget _buildWaiter() {
     return StreamBuilder<bool>(
-        stream: streamLoadingStatus,
-        builder: (context, snapshot) {
-          if (snapshot.data ?? false) {
-            return Center(
-                child: SizedBox(
+      stream: streamLoadingStatus,
+      builder: (context, snapshot) {
+        if (snapshot.data ?? false) {
+          return Center(
+            child: SizedBox(
               height: 100,
               width: 100,
               child: CircularProgressIndicator(
@@ -143,10 +143,12 @@ class ScreenFormer extends StatelessWidget {
                 backgroundColor: DesignStyles.colorVariateDark.withOpacity(0.5),
                 strokeWidth: 5,
               ),
-            ));
-          } else {
-            return const SizedBox.shrink();
-          }
-        });
+            ),
+          );
+        } else {
+          return const SizedBox.shrink();
+        }
+      },
+    );
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,24 +17,20 @@ class Strings {
   String get input => _getText('input');
   String get singInGoogle => _getText('singInGoogle');
   String get login => _getText('login');
-  String get listTruck => _getText('listTruck');
-  String get session => _getText('session');
   String get settings => _getText('settings');
   String get english => _getText('english');
   String get russian => _getText('russian');
-  String get inputPasswordTitle => _getText('inputPasswordTitle');
-  String get inputPasswordDescribe => _getText('inputPasswordDescribe');
-  String get confirm => _getText('confirm');
-  String get cancel => _getText('cancel');
-  String get emptyNameUser => _getText('emptyNameUser');
-  String get emptyNameSession => _getText('emptyNameSession');
-  String get start => _getText('start');
-  String get wait => _getText('wait');
-  String get tap => _getText('tap');
-  String get sessionCreateTitle => _getText('sessionCreateTitle');
-  String get sessionNameInput => _getText('sessionNameInput');
-  String get sessionPinCodeInput => _getText('sessionPinCodeInput');
-  String get sessionCreate => _getText('sessionCreate');
+  String get nA => _getText('nA');
+  String get notPhone => _getText('notPhone');
+  String get notEmail => _getText('notEmail');
+  String get homePage => _getText('homePage');
+  String get workout => _getText('workout');
+  String get gravityEarth => _getText('gravityEarth');
+  String get gravityPhone => _getText('gravityPhone');
+  String get stopSpeed => _getText('stopSpeed');
+  String get walkSpeed => _getText('walkSpeed');
+  String get runSpeed => _getText('runSpeed');
+  String get flySpeed => _getText('flySpeed');
 
   String get emptyString => _getText('emptyString');
 
@@ -43,7 +38,10 @@ class Strings {
 
   static Map<String, String?> _dictionary = {};
 
-  static Set<LangModel> languages = {};
+  static Set<LangModel> languages = {
+    LangModel('English', 'en'),
+    LangModel('Русский', 'ru'),
+  };
 
   static Future<void> loadFromLocal(Locale l) async {
     try {

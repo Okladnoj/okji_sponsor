@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import '../../../../services/settings.dart';
 
-import '../models/truck_model.dart';
+import '../models/home_model.dart';
 
-class TruckApi {
+class HomeApi {
   final _dio = AppApi.dio;
 
-  Future<TruckModel?> getTruck() async {
-    TruckModel? result;
+  Future<HomeModelResponse?> getHome() async {
+    HomeModelResponse? result;
     final body = {};
     final response = await _dio.get(
       'truck',
@@ -17,8 +17,8 @@ class TruckApi {
     final data = response.data as Map<String, dynamic>?;
 
     if (data != null) {
-      result = await compute<Map<String, dynamic>, TruckModel>(
-        _parseTruckModel,
+      result = await compute<Map<String, dynamic>, HomeModelResponse>(
+        _parseHomeModel,
         data,
       );
     }
@@ -26,9 +26,9 @@ class TruckApi {
     return result;
   }
 
-  static Future<TruckModel> _parseTruckModel(
+  static Future<HomeModelResponse> _parseHomeModel(
     Map<String, dynamic> body,
   ) async {
-    return TruckModel.fromJson(body);
+    return HomeModelResponse.fromJson(body);
   }
 }

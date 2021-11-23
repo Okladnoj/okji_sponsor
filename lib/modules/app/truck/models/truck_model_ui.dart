@@ -1,49 +1,46 @@
+import 'dart:math';
+
+import 'package:okji_sponsor/models/user/login_mode_iu.dart';
+import 'package:sensors_plus/sensors_plus.dart';
+
 import 'truck_model.dart';
 
 class TruckModelUI {
-  final List<SessionModelUI> listSession;
+  final CurrentPointModelUI currentPoint;
+  final List<CurrentPointModelUI> midPoints;
 
-  TruckModelUI(
-    this.listSession,
+  const TruckModelUI(
+    this.currentPoint,
+    this.midPoints,
   );
 }
 
-class SessionModelUI {
-  final String uuid;
-  final String name;
-  final bool isReady;
-  final List<UserModelUI> users;
-  final bool protected;
-  final String createdAt;
-  final String expiredAt;
-  final SessionModel? model;
+class CurrentPointModelUI {
+  final VolumeModelUI accelerometer;
+  final VolumeModelUI userAccelerometer;
+  final VolumeModelUI gyroscope;
+  final VolumeModelUI magnetometer;
 
-  SessionModelUI(
-    this.uuid,
-    this.name,
-    this.isReady,
-    this.users,
-    this.protected,
-    this.createdAt,
-    this.expiredAt,
-    this.model,
+  const CurrentPointModelUI(
+    this.accelerometer,
+    this.userAccelerometer,
+    this.gyroscope,
+    this.magnetometer,
   );
 }
 
-class UserModelUI {
-  final String uuid;
-  final String name;
-  final String email;
-  final int scores;
-  final String createdAt;
-  final UserModel? model;
+class VolumeModelUI {
+  final double x;
+  final double y;
+  final double z;
 
-  UserModelUI(
-    this.uuid,
-    this.name,
-    this.email,
-    this.scores,
-    this.createdAt,
-    this.model,
+  const VolumeModelUI(
+    this.x,
+    this.y,
+    this.z,
   );
+
+  double get module {
+    return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+  }
 }

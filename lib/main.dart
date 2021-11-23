@@ -16,8 +16,25 @@ class TapTap extends MaterialApp {
           ],
           title: 'Run Earn',
           navigatorKey: DesignStyles.navigatorKey,
-          home: const FlowControllerRoot(),
+          home: const RootPage(),
           theme: DesignStyles.themeData,
           debugShowCheckedModeBanner: false,
         );
+}
+
+class RootPage extends StatefulWidget {
+  const RootPage({Key? key}) : super(key: key);
+
+  @override
+  _RootPageState createState() => _RootPageState();
+}
+
+class _RootPageState extends State<RootPage> with PopScopeHost<RootPage> {
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: const FlowControllerRoot(),
+    );
+  }
 }
