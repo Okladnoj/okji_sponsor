@@ -1,6 +1,6 @@
-import 'package:okji_sponsor/models/user/login_model.dart';
+import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 
-import '../../../../models/user/login_mode_iu.dart';
+import '../../../../modules/app/profile/models/user_mode_iu.dart';
 
 class HomeModelUI {
   final UserModelUI user;

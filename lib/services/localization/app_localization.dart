@@ -31,6 +31,25 @@ class Strings {
   String get walkSpeed => _getText('walkSpeed');
   String get runSpeed => _getText('runSpeed');
   String get flySpeed => _getText('flySpeed');
+  String get age => _getText('age');
+  String get m => _getText('m');
+  String get sm => _getText('sm');
+  String get mm => _getText('mm');
+  String get mShort => _getText('mShort');
+  String get smShort => _getText('smShort');
+  String get mmShort => _getText('mmShort');
+  String get kg => _getText('kg');
+  String get gr => _getText('gr');
+  String get kgShort => _getText('kgShort');
+  String get grShort => _getText('grShort');
+  String get phoneTitle => _getText('phoneTitle');
+  String get phoneHint => _getText('phoneHint');
+  String get nameTitle => _getText('nameTitle');
+  String get nameHint => _getText('nameHint');
+  String get updateProfile => _getText('updateProfile');
+  String get weightTitle => _getText('weightTitle');
+  String get heightTitle => _getText('heightTitle');
+  String get profileSetting => _getText('profileSetting');
 
   String get emptyString => _getText('emptyString');
 
@@ -46,7 +65,7 @@ class Strings {
   static Future<void> loadFromLocal(Locale l) async {
     try {
       locale = l;
-      final String string = await rootBundle.loadString("assets/langs/${locale.languageCode}.json");
+      final String string = await rootBundle.loadString("lib/services/localization/langs/${locale.languageCode}.json");
       _dictionary = (json.decode(string) as Map<String, dynamic>).cast();
     } catch (e) {
       print(e);

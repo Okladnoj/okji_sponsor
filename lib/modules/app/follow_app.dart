@@ -1,8 +1,10 @@
+import 'package:okji_sponsor/modules/app/profile/p_profile.dart';
 import 'package:okji_sponsor/modules/app/truck/p_truck.dart';
 
 import '../../services/settings.dart';
 import 'home/p_home.dart';
 import 'home/s_home.dart';
+import 'profile/s_profile.dart';
 
 class FollowControllerApp extends StatefulWidget {
   static const id = 'FollowControllerApp';
@@ -13,7 +15,9 @@ class FollowControllerApp extends StatefulWidget {
 }
 
 class _FollowControllerAppState extends BaseFlowControllerState<FollowControllerApp>
-    implements HomeListener<FollowControllerApp> {
+    implements //
+        HomeListener<FollowControllerApp>,
+        ProfileListener<FollowControllerApp> {
   @override
   @override
   AppPage createInitialPage() {
@@ -22,9 +26,22 @@ class _FollowControllerAppState extends BaseFlowControllerState<FollowController
 
   @override
   Future<R?> onNavigateToTruckP<R>() async {
-    await pushSimple(() => const TruckP(), name: TruckP.id);
+    return await pushSimple<R>(() => const TruckP(), name: TruckP.id);
   }
 
   @override
-  Future<R?> onSessionAdd<R>() async {}
+  Future<R?> onNavigateToMapP<R>() async {}
+
+  @override
+  Future<R?> onSaveProfile<R>() async {}
+
+  @override
+  Future<R?> onEditProfile<R>() async {
+    return await pushSimple<R>(() => const ProfileP(), name: ProfileP.id);
+  }
+
+  @override
+  void onPopProfileP<R>({R? result}) {
+    pop<R>(result: result);
+  }
 }

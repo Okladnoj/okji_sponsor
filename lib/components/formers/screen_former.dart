@@ -31,20 +31,25 @@ class ScreenFormer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: DesignStyles.colorDark,
-      bottomNavigationBar: bottomBar,
-      resizeToAvoidBottomInset: true,
-      onDrawerChanged: (_) {},
-      drawer: _buildDrawer(),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            _buildBodyList(),
-            _buildBottomButton(),
-            _buildTitle(),
-            _buildWaiter(),
-          ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: DesignStyles.colorDark,
+        bottomNavigationBar: bottomBar,
+        resizeToAvoidBottomInset: true,
+        onDrawerChanged: (_) {},
+        drawer: _buildDrawer(),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              _buildBodyList(),
+              _buildBottomButton(),
+              _buildTitle(),
+              _buildWaiter(),
+            ],
+          ),
         ),
       ),
     );

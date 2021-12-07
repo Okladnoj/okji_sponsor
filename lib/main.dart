@@ -1,4 +1,7 @@
+import 'package:firebase_analytics/observer.dart';
+
 import 'modules/follow_root.dart';
+import 'services/initialization_app/analytic.dart';
 import 'services/localization/localization_builder.dart';
 import 'services/settings.dart';
 
@@ -12,7 +15,7 @@ class TapTap extends MaterialApp {
       : super(
           key: key,
           navigatorObservers: [
-            // FirebaseAnalyticsObserver(analytics: AnalyticAppEvents.getInstance),
+            FirebaseAnalyticsObserver(analytics: AnalyticAppEvents.getInstance),
           ],
           title: 'Run for Money',
           navigatorKey: DesignStyles.navigatorKey,

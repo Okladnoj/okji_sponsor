@@ -57,7 +57,10 @@ class HomePState extends State<HomeP> with ErrorHandlerState {
   Widget _buildUserInfo() {
     final user = _modelUI?.user;
     if (user != null) {
-      return UserAvatarW(user: user);
+      return UserAvatarW(
+        user: user,
+        onTap: _interactor.onEditProfile,
+      );
     } else {
       return const SizedBox.shrink();
     }

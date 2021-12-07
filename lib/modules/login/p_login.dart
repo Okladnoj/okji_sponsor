@@ -2,7 +2,7 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 
 import '../../../services/settings.dart';
-import '../../models/user/login_mode_iu.dart';
+import '../../modules/app/profile/models/user_mode_iu.dart';
 import 'i_login.dart';
 
 class LoginP extends StatefulWidget {

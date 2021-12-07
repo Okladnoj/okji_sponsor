@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:okji_sponsor/services/initialization_app/analytic.dart';
 
 import 'controller.dart';
 import 'dialog.dart';
@@ -73,6 +74,7 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
       onGenerateRoute: (s) {
         final AppPage page = createInitialPage();
         _navStack?.add(page.name);
+        AnalyticAppEvents.setEventStringWithMap('screen_view', {'nav_stack': _navStack?.join('/')});
         return CupertinoPageRoute(builder: (s) => page.widget, settings: RouteSettings(name: page.name));
       },
     );
@@ -80,6 +82,7 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
 
   Future<R?>? showErrorDialog<R>(String message) {
     _cancelLoading();
+
     return showDesignDialog(DesignErrorDialog(message), name: _ROUTE_ERROR);
   }
 

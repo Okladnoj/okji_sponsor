@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "399707653351-ibrhra9oj2j3rnfd87e3q36hbkcek76u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.okji.sponsor",
+            "certificate_hash": "526b02c9c3cffc0738849e49bcd58a1e959f0354"
+          }
+        },
+        {
           "client_id": "399707653351-adp1im9u4q1p9hosh38ft6kldlp31rrg.apps.googleusercontent.com",
           "client_type": 3
         }

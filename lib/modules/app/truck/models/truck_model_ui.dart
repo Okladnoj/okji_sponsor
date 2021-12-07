@@ -1,10 +1,5 @@
 import 'dart:math';
 
-import 'package:okji_sponsor/models/user/login_mode_iu.dart';
-import 'package:sensors_plus/sensors_plus.dart';
-
-import 'truck_model.dart';
-
 class TruckModelUI {
   final CurrentPointModelUI currentPoint;
   final List<CurrentPointModelUI> midPoints;

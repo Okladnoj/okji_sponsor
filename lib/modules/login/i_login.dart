@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import '../../../services/settings.dart';
-import '../../models/user/login_mode_iu.dart';
-import '../../models/user/login_model.dart';
+import '../../modules/app/profile/models/user_mode_iu.dart';
+import '../../modules/app/profile/models/user_model.dart';
 import '../../modules/login/s_login.dart';
 import 'domain/login_api.dart';
 import 'p_login.dart';
@@ -35,11 +35,11 @@ class LoginInteractor with BaseInteractor<UserModelUI> {
         user.photoURL;
         user.phoneNumber;
         _model = _model.copyWith(
-          uid: user.uid,
-          displayName: user.displayName,
+          id: user.uid,
+          name: user.displayName,
           email: user.email,
-          photoURL: user.photoURL,
-          phoneNumber: user.phoneNumber,
+          avatar: user.photoURL,
+          phone: user.phoneNumber,
         );
         AppPreference.token = user.uid;
         AppPreference.user = _model;
@@ -64,13 +64,7 @@ class LoginInteractor with BaseInteractor<UserModelUI> {
   }
 
   UserModelUI _mapToUI() {
-    return UserModelUI(
-      _model.uid ?? '',
-      _model.displayName ?? '',
-      _model.email ?? '',
-      _model.photoURL ?? '',
-      _model.phoneNumber ?? '',
-    );
+    return _model.toUI();
   }
 
   LoginListener? get _deps => _state.context.findAncestorStateOfType<LoginListener>();

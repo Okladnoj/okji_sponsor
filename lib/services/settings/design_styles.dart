@@ -1,21 +1,25 @@
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 import '../settings.dart';
+
+part 'config.dart';
 
 class DesignStyles {
   static Color red = const Color(0xFFFF0000);
 
   static Color black = const Color(0xFF000000);
 
-  static Color colorLight = const Color(0xFFdcdcdc);
+  static Color colorLight = const Color(0xFF9C9797);
 
-  static Color colorDark = const Color(0xFF1c222a);
+  static Color colorDark = const Color(0xFF1C222A);
 
-  static Color transparent = const Color(0x1A1c222a);
+  static Color transparent = const Color(0x1A1C222A);
 
-  static Color colorMiddle = const Color(0xFF6a655d);
+  static Color colorMiddle = const Color(0xFF6A655D);
 
-  static Color colorVariate = const Color(0xFFedb021);
+  static Color colorVariate = const Color(0xFFEDB021);
 
-  static Color colorVariateDark = const Color(0xFF825b00);
+  static Color colorVariateDark = const Color(0xFF825B00);
 
   static BorderRadiusGeometry borderRadiusButton = BorderRadius.circular(5);
 

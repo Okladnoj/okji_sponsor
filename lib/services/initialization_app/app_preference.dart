@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../models/user/login_model.dart';
+import '../../modules/app/profile/models/user_model.dart';
 import '../settings.dart';
 
 class AppPreference {
