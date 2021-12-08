@@ -36,6 +36,11 @@
   "weightTitle": "Вес",
   "heightTitle": "Рост",
   "profileSetting": "Настройки профиля",
+  "people": "Люди",
+  "all": "Все",
+  "friend": "Друзья",
+  "subscribe": "Подписка",
+  "peopleEmpty": "Список людей пуст",
   
   "emptyString": ""
 }

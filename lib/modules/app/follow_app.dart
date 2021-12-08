@@ -4,6 +4,7 @@ import 'package:okji_sponsor/modules/app/truck/p_truck.dart';
 import '../../services/settings.dart';
 import 'home/p_home.dart';
 import 'home/s_home.dart';
+import 'people/p_people.dart';
 import 'profile/s_profile.dart';
 
 class FollowControllerApp extends StatefulWidget {
@@ -43,5 +44,10 @@ class _FollowControllerAppState extends BaseFlowControllerState<FollowController
   @override
   void onPopProfileP<R>({R? result}) {
     pop<R>(result: result);
+  }
+
+  @override
+  Future<R?> onNavigateToPeopleP<R>() async {
+    return await pushSimple<R>(() => const PeopleP(), name: PeopleP.id);
   }
 }

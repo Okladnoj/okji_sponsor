@@ -36,6 +36,11 @@
   "weightTitle": "Weight",
   "heightTitle": "Hight",
   "profileSetting": "Setting Profile",
+  "people": "People",
+  "all": "All",
+  "friend": "Friend",
+  "subscribe": "Subscribe",
+  "peopleEmpty": "People list is empty",
   
   "emptyString": ""
 }

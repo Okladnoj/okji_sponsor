@@ -50,6 +50,11 @@ class Strings {
   String get weightTitle => _getText('weightTitle');
   String get heightTitle => _getText('heightTitle');
   String get profileSetting => _getText('profileSetting');
+  String get people => _getText('people');
+  String get all => _getText('all');
+  String get friend => _getText('friend');
+  String get subscribe => _getText('subscribe');
+  String get peopleEmpty => _getText('peopleEmpty');
 
   String get emptyString => _getText('emptyString');
 

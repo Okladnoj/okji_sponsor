@@ -43,6 +43,7 @@ class HomePState extends State<HomeP> with ErrorHandlerState {
           ),
           children: [
             _buildUserInfo(),
+            _buildButtonNavigateToPeople(),
             _buildButtonNavigateToTruck(),
           ],
         );
@@ -83,6 +84,33 @@ class HomePState extends State<HomeP> with ErrorHandlerState {
           ),
           child: Text(
             Strings.text.workout,
+            style: DesignStyles.textCustom(
+              fontSize: 24,
+              color: DesignStyles.colorLight,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButtonNavigateToPeople() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      child: InkCustomSimple(
+        onTap: _interactor.onNavigateToPeopleP,
+        child: Container(
+          alignment: const Alignment(0, 0),
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          decoration: DesignStyles.buttonDecoration(
+            blurRadius: 10,
+            borderRadius: 10,
+            offset: const Offset(0, 2),
+            colorBoxShadow: DesignStyles.colorDark,
+            color: DesignStyles.colorDark,
+          ),
+          child: Text(
+            Strings.text.people,
             style: DesignStyles.textCustom(
               fontSize: 24,
               color: DesignStyles.colorLight,

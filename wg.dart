@@ -3,7 +3,7 @@ import 'dart:io';
 
 ///dart run wg.dart && flutter pub run build_runner build --delete-conflicting-outputs
 ///
-const nameModule = 'Profile';
+const nameModule = 'People';
 const namePackage = 'okji_sponsor';
 const directory = 'lib/modules/app';
 

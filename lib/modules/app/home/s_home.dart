@@ -6,4 +6,6 @@ abstract class HomeListener<T extends StatefulWidget> implements State<T> {
   Future<R?> onNavigateToMapP<R>();
 
   Future<R?> onEditProfile<R>();
+
+  Future<R?> onNavigateToPeopleP<R>();
 }
