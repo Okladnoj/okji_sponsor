@@ -41,6 +41,10 @@
   "friend": "Friend",
   "subscribe": "Subscribe",
   "peopleEmpty": "People list is empty",
+  "privateAll": "Visible to All",
+  "privateFriend": "Visible only Friend",
+  "privateSubscribe": "Visible to Subscribers",
+  "privateNone": "Hidden from everyone",
   
   "emptyString": ""
 }

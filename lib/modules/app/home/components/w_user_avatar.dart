@@ -33,8 +33,8 @@ class UserAvatarW extends StatelessWidget {
               CircleAvatar(
                 radius: 50,
                 backgroundColor: DesignStyles.colorDark,
-                foregroundImage: CachedNetworkImageProvider(user.avatar),
-                child: Text(user.name),
+                foregroundImage: CachedNetworkImageProvider(user.avatar.value),
+                child: Text(user.name.value),
               ),
               const SizedBox(width: 15),
               Expanded(
@@ -43,7 +43,7 @@ class UserAvatarW extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          user.name,
+                          user.name.value,
                           style: DesignStyles.textCustom(
                             fontSize: 18,
                             color: DesignStyles.colorLight,
@@ -57,7 +57,7 @@ class UserAvatarW extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          user.email,
+                          user.email.value,
                           style: DesignStyles.textCustom(
                             fontSize: 15,
                             color: DesignStyles.colorLight,
@@ -70,7 +70,7 @@ class UserAvatarW extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          user.phone,
+                          user.phone.value,
                           style: DesignStyles.textCustom(
                             fontSize: 15,
                             color: DesignStyles.colorLight,

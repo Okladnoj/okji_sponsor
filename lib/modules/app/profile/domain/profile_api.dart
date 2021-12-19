@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 import 'package:okji_sponsor/services/settings.dart';
 
 class ProfileApi {
   final _dio = AppApi.dio;
+
+  static CollectionReference<Map<String, dynamic>> get collection =>
+      FirebaseFirestore.instance.collection('root').doc('usersDoc1').collection('users');
 
   Future<UserModel?> getProfile() async {
     final user = AppPreference.user;
@@ -13,15 +15,6 @@ class ProfileApi {
     final _result = await firDoc.get();
 
     return _result.data();
-  }
-
-  static Future<UserModel> _parseProfileModel(
-    Map<String, dynamic> json,
-  ) async {
-    return compute<Map<String, dynamic>, UserModel>(
-      (json) async => UserModel.fromJson(json),
-      json,
-    );
   }
 
   Future<void> saveUserModel(UserModel model) async {

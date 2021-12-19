@@ -64,11 +64,11 @@ class ProfilePState extends State<ProfileP> with ErrorHandlerState {
       children: [
         InputNameW(
           interactor: _interactor,
-          initValue: _modelUI?.name ?? '',
+          modelUI: _modelUI!,
         ),
         InputPhoneW(
           interactor: _interactor,
-          initValue: _modelUI?.phone ?? '',
+          modelUI: _modelUI!,
         ),
         InputHeightW(
           interactor: _interactor,

@@ -55,6 +55,10 @@ class Strings {
   String get friend => _getText('friend');
   String get subscribe => _getText('subscribe');
   String get peopleEmpty => _getText('peopleEmpty');
+  String get privateAll => _getText('privateAll');
+  String get privateFriend => _getText('privateFriend');
+  String get privateSubscribe => _getText('privateSubscribe');
+  String get privateNone => _getText('privateNone');
 
   String get emptyString => _getText('emptyString');
 

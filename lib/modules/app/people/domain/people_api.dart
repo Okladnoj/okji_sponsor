@@ -1,16 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+import 'package:okji_sponsor/modules/app/profile/domain/profile_api.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 import 'package:okji_sponsor/services/settings.dart';
-
-import '../models/people_model.dart';
 
 class PeopleApi {
   final _dio = AppApi.dio;
 
   Future<List<UserModel>> getPeople() async {
     List<UserModel> result = [];
-    final collection = FirebaseFirestore.instance.collection('root').doc('usersDoc').collection('users');
+    final collection = ProfileApi.collection;
     final usersDoc = await collection.limit(100).get();
     final usersDocs = usersDoc.docs
         .map(

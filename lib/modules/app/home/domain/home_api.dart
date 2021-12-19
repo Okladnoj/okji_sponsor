@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 import '../../../../services/settings.dart';
 
@@ -39,7 +42,8 @@ class HomeApi {
     //   });
     // });
 
-    print(result);
+    log(user.toJson().toString());
+    log(result.toJson().toString());
 
     return result;
   }

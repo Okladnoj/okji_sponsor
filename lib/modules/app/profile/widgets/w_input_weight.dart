@@ -6,6 +6,7 @@ import 'package:okji_sponsor/services/settings.dart';
 
 import '../i_profile.dart';
 import '../models/user_mode_iu.dart';
+import 'w_private_sessings.dart';
 
 class InputWeightW extends StatefulWidget {
   const InputWeightW({
@@ -33,29 +34,46 @@ class _InputWeightWState extends State<InputWeightW> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: InkCustomSimple(
-        borderRadius: BorderRadius.circular(_borderRadius),
-        onTap: () {
-          _showPicker(context);
-        },
-        child: Container(
-          alignment: const Alignment(0, 0),
-          padding: const EdgeInsets.all(5),
-          decoration: DesignStyles.buttonDecoration(
-            blurRadius: _borderRadius,
-            borderRadius: _borderRadius,
-            offset: const Offset(0, 2),
-            colorBoxShadow: DesignStyles.colorDark,
-            color: DesignStyles.colorDark,
-            colorBorder: DesignStyles.colorDark,
+      child: Stack(
+        alignment: const Alignment(1, -1),
+        children: [
+          InkCustomSimple(
+            borderRadius: BorderRadius.circular(_borderRadius),
+            onTap: () {
+              _showPicker(context);
+            },
+            child: Container(
+              alignment: const Alignment(0, 0),
+              padding: const EdgeInsets.all(5),
+              decoration: DesignStyles.buttonDecoration(
+                blurRadius: _borderRadius,
+                borderRadius: _borderRadius,
+                offset: const Offset(0, 2),
+                colorBoxShadow: DesignStyles.colorDark,
+                color: DesignStyles.colorDark,
+                colorBorder: DesignStyles.colorDark,
+              ),
+              child: Column(
+                children: [
+                  _buildTitle(),
+                  _buildChooser(),
+                ],
+              ),
+            ),
           ),
-          child: Column(
-            children: [
-              _buildTitle(),
-              _buildChooser(),
-            ],
+          StreamBuilder<UserModelUI>(
+            stream: widget.interactor.observer,
+            builder: (context, s) {
+              _modelUI = s.data ?? _modelUI;
+              return PrivateSettings(
+                onSelected: (_) {
+                  widget.interactor.onChangePrivateWeight(_);
+                },
+                initValue: _modelUI.weight.access,
+              );
+            },
           ),
-        ),
+        ],
       ),
     );
   }
@@ -88,7 +106,7 @@ class _InputWeightWState extends State<InputWeightW> {
         children: [
           Expanded(
             child: Text(
-              _modelUI.weight,
+              _modelUI.weight.value,
               textAlign: TextAlign.center,
               style: DesignStyles.textCustom(
                 fontSize: 22,
@@ -133,7 +151,7 @@ class _InputWeightWState extends State<InputWeightW> {
                     child: Column(
                       children: [
                         DecimalNumberPicker(
-                          value: (_modelUI.model?.weight ?? 0) / 1000,
+                          value: (_modelUI.model?.weight?.value ?? 0) / 1000,
                           minValue: 0,
                           maxValue: 300,
                           decimalPlaces: 2,

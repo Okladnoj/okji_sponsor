@@ -1,17 +1,19 @@
+import 'package:okji_sponsor/modules/app/people/models/people_model.dart';
+
 import 'user_model.dart';
 
 class UserModelUI {
   final String id;
-  final String name;
-  final String age;
-  final String phone;
-  final String email;
-  final String avatar;
-  final String height;
-  final String weight;
-  final String chest;
-  final String waist;
-  final String hip;
+  final UserPropertyUI<String> name;
+  final UserPropertyUI<String> age;
+  final UserPropertyUI<String> phone;
+  final UserPropertyUI<String> email;
+  final UserPropertyUI<String> avatar;
+  final UserPropertyUI<String> height;
+  final UserPropertyUI<String> weight;
+  final UserPropertyUI<String> chest;
+  final UserPropertyUI<String> waist;
+  final UserPropertyUI<String> hip;
   final UserModel? model;
 
   UserModelUI(
@@ -28,4 +30,11 @@ class UserModelUI {
     this.hip,
     this.model,
   );
+}
+
+class UserPropertyUI<T> {
+  final T value;
+  final PeopleType access;
+
+  UserPropertyUI(this.value, this.access);
 }

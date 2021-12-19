@@ -41,6 +41,10 @@
   "friend": "Друзья",
   "subscribe": "Подписка",
   "peopleEmpty": "Список людей пуст",
+  "privateAll": "Видно всем",
+  "privateFriend": "Видно только друзьям",
+  "privateSubscribe": "Видно подписчикам",
+  "privateNone": "Скрыто от всех",
   
   "emptyString": ""
 }

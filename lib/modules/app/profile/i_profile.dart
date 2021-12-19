@@ -1,3 +1,4 @@
+import 'package:okji_sponsor/modules/app/people/models/people_model.dart';
 import 'package:okji_sponsor/services/settings.dart';
 
 import 'domain/profile_api.dart';
@@ -27,6 +28,7 @@ class ProfileInteractor with BaseInteractor<UserModelUI> {
     if (result != null) {
       _model = result;
     }
+    _fixInitModel();
   }
 
   Future<void> saveUserModel() async {
@@ -43,12 +45,13 @@ class ProfileInteractor with BaseInteractor<UserModelUI> {
   void onChangePhone(String? value) {
     final cleanPhone = Config.phoneMask.unmaskText(value ?? '');
     final t2 = Config.phoneMask.maskText(value ?? '');
-    _model = _model.copyWith(phone: cleanPhone);
+
+    _model = _model.copyWith(phone: _model.phone?.copyWith(value: cleanPhone));
     _updateUI();
   }
 
   void onChangeName(String? value) {
-    _model = _model.copyWith(name: value);
+    _model = _model.copyWith(name: _model.name?.copyWith(value: value));
     _updateUI();
   }
 
@@ -57,18 +60,77 @@ class ProfileInteractor with BaseInteractor<UserModelUI> {
     if (value != null) {
       _value = int.tryParse(value);
     }
-    _model = _model.copyWith(age: _value);
+
+    _model = _model.copyWith(age: _model.age?.copyWith(value: _value));
     _updateUI();
   }
 
   void onChangeWeight(int? value) {
-    _model = _model.copyWith(weight: value);
+    _model = _model.copyWith(weight: _model.weight?.copyWith(value: value));
     _updateUI();
   }
 
   void onChangeHeight(int? value) {
-    _model = _model.copyWith(height: value);
+    _model = _model.copyWith(height: _model.height?.copyWith(value: value));
     _updateUI();
+  }
+
+  void onChangePrivatePhone(PeopleType? value) {
+    _model = _model.copyWith(phone: _model.phone?.copyWith(access: value));
+    _updateUI();
+  }
+
+  void onChangePrivateName(PeopleType? value) {
+    _model = _model.copyWith(name: _model.name?.copyWith(access: value));
+    _updateUI();
+  }
+
+  void onChangePrivateAge(PeopleType? value) {
+    _model = _model.copyWith(age: _model.age?.copyWith(access: value));
+    _updateUI();
+  }
+
+  void onChangePrivateWeight(PeopleType? value) {
+    _model = _model.copyWith(weight: _model.weight?.copyWith(access: value));
+    _updateUI();
+  }
+
+  void onChangePrivateHeight(PeopleType? value) {
+    _model = _model.copyWith(height: _model.height?.copyWith(access: value));
+    _updateUI();
+  }
+
+  void _fixInitModel() {
+    if (_model.age == null) {
+      _model = _model.copyWith(age: const UserIntProperty());
+    }
+    if (_model.avatar == null) {
+      _model = _model.copyWith(avatar: const UserStringProperty());
+    }
+    if (_model.chest == null) {
+      _model = _model.copyWith(chest: const UserIntProperty());
+    }
+    if (_model.email == null) {
+      _model = _model.copyWith(email: const UserStringProperty());
+    }
+    if (_model.height == null) {
+      _model = _model.copyWith(height: const UserIntProperty());
+    }
+    if (_model.hip == null) {
+      _model = _model.copyWith(hip: const UserIntProperty());
+    }
+    if (_model.name == null) {
+      _model = _model.copyWith(name: const UserStringProperty());
+    }
+    if (_model.phone == null) {
+      _model = _model.copyWith(phone: const UserStringProperty());
+    }
+    if (_model.waist == null) {
+      _model = _model.copyWith(waist: const UserIntProperty());
+    }
+    if (_model.weight == null) {
+      _model = _model.copyWith(weight: const UserIntProperty());
+    }
   }
 
   void _updateUI() {

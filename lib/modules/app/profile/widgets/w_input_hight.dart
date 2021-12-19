@@ -1,11 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:okji_sponsor/modules/app/people/models/people_model.dart';
 import 'package:okji_sponsor/services/settings.dart';
 
 import '../i_profile.dart';
 import '../models/user_mode_iu.dart';
+import 'w_private_sessings.dart';
 
 class InputHeightW extends StatefulWidget {
   const InputHeightW({
@@ -33,29 +33,46 @@ class _InputHeightWState extends State<InputHeightW> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: InkCustomSimple(
-        borderRadius: BorderRadius.circular(_borderRadius),
-        onTap: () {
-          _showPicker(context);
-        },
-        child: Container(
-          alignment: const Alignment(0, 0),
-          padding: const EdgeInsets.all(5),
-          decoration: DesignStyles.buttonDecoration(
-            blurRadius: _borderRadius,
-            borderRadius: _borderRadius,
-            offset: const Offset(0, 2),
-            colorBoxShadow: DesignStyles.colorDark,
-            color: DesignStyles.colorDark,
-            colorBorder: DesignStyles.colorDark,
+      child: Stack(
+        alignment: const Alignment(1, -1),
+        children: [
+          InkCustomSimple(
+            borderRadius: BorderRadius.circular(_borderRadius),
+            onTap: () {
+              _showPicker(context);
+            },
+            child: Container(
+              alignment: const Alignment(0, 0),
+              padding: const EdgeInsets.all(5),
+              decoration: DesignStyles.buttonDecoration(
+                blurRadius: _borderRadius,
+                borderRadius: _borderRadius,
+                offset: const Offset(0, 2),
+                colorBoxShadow: DesignStyles.colorDark,
+                color: DesignStyles.colorDark,
+                colorBorder: DesignStyles.colorDark,
+              ),
+              child: Column(
+                children: [
+                  _buildTitle(),
+                  _buildChooser(),
+                ],
+              ),
+            ),
           ),
-          child: Column(
-            children: [
-              _buildTitle(),
-              _buildChooser(),
-            ],
+          StreamBuilder<UserModelUI>(
+            stream: widget.interactor.observer,
+            builder: (context, s) {
+              _modelUI = s.data ?? _modelUI;
+              return PrivateSettings(
+                onSelected: (_) {
+                  widget.interactor.onChangePrivateHeight(_);
+                },
+                initValue: _modelUI.height.access,
+              );
+            },
           ),
-        ),
+        ],
       ),
     );
   }
@@ -88,7 +105,7 @@ class _InputHeightWState extends State<InputHeightW> {
         children: [
           Expanded(
             child: Text(
-              _modelUI.height,
+              _modelUI.height.value,
               textAlign: TextAlign.center,
               style: DesignStyles.textCustom(
                 fontSize: 22,
@@ -133,7 +150,7 @@ class _InputHeightWState extends State<InputHeightW> {
                     child: Column(
                       children: [
                         DecimalNumberPicker(
-                          value: (_modelUI.model?.height ?? 0) / 100,
+                          value: (_modelUI.model?.height?.value ?? 0) / 100,
                           minValue: 0,
                           maxValue: 3,
                           decimalPlaces: 2,

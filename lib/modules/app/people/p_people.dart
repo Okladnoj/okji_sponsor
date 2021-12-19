@@ -2,6 +2,7 @@ import 'package:okji_sponsor/modules/app/people/widgets/w_user_avatar.dart';
 import 'package:okji_sponsor/services/settings.dart';
 
 import 'i_people.dart';
+import 'models/people_model.dart';
 import 'models/people_model_ui.dart';
 import 'widgets/w_people_title.dart';
 

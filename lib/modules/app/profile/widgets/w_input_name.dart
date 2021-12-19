@@ -1,16 +1,18 @@
 import 'package:okji_sponsor/services/settings.dart';
 
 import '../i_profile.dart';
+import '../models/user_mode_iu.dart';
+import 'w_private_sessings.dart';
 
 class InputNameW extends StatefulWidget {
   const InputNameW({
     Key? key,
     required this.interactor,
-    required this.initValue,
+    required this.modelUI,
   }) : super(key: key);
 
   final ProfileInteractor interactor;
-  final String initValue;
+  final UserModelUI modelUI;
 
   @override
   _InputNameWState createState() => _InputNameWState();
@@ -18,9 +20,11 @@ class InputNameW extends StatefulWidget {
 
 class _InputNameWState extends State<InputNameW> {
   final _controller = TextEditingController();
+  late UserModelUI _modelUI;
   @override
   void initState() {
-    _controller.text = widget.initValue;
+    _modelUI = widget.modelUI;
+    _controller.text = widget.modelUI.name.value;
     _addListeners();
     super.initState();
   }
@@ -35,23 +39,40 @@ class _InputNameWState extends State<InputNameW> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: Container(
-        alignment: const Alignment(0, 0),
-        padding: const EdgeInsets.all(5),
-        decoration: DesignStyles.buttonDecoration(
-          blurRadius: _borderRadius,
-          borderRadius: _borderRadius,
-          offset: const Offset(0, 2),
-          colorBoxShadow: DesignStyles.colorDark,
-          color: DesignStyles.colorDark,
-          colorBorder: DesignStyles.colorDark,
-        ),
-        child: Column(
-          children: [
-            _buildTitle(),
-            _buildTextField(),
-          ],
-        ),
+      child: Stack(
+        alignment: const Alignment(1, -1),
+        children: [
+          Container(
+            alignment: const Alignment(0, 0),
+            padding: const EdgeInsets.all(5),
+            decoration: DesignStyles.buttonDecoration(
+              blurRadius: _borderRadius,
+              borderRadius: _borderRadius,
+              offset: const Offset(0, 2),
+              colorBoxShadow: DesignStyles.colorDark,
+              color: DesignStyles.colorDark,
+              colorBorder: DesignStyles.colorDark,
+            ),
+            child: Column(
+              children: [
+                _buildTitle(),
+                _buildTextField(),
+              ],
+            ),
+          ),
+          StreamBuilder<UserModelUI>(
+            stream: widget.interactor.observer,
+            builder: (context, s) {
+              _modelUI = s.data ?? _modelUI;
+              return PrivateSettings(
+                onSelected: (_) {
+                  widget.interactor.onChangePrivateName(_);
+                },
+                initValue: _modelUI.name.access,
+              );
+            },
+          ),
+        ],
       ),
     );
   }

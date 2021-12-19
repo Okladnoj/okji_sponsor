@@ -36,10 +36,10 @@ class LoginInteractor with BaseInteractor<UserModelUI> {
         user.phoneNumber;
         _model = _model.copyWith(
           id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          avatar: user.photoURL,
-          phone: user.phoneNumber,
+          name: UserStringProperty(value: user.displayName),
+          email: UserStringProperty(value: user.email),
+          avatar: UserStringProperty(value: user.photoURL),
+          phone: UserStringProperty(value: user.phoneNumber),
         );
         AppPreference.token = user.uid;
         AppPreference.user = _model;

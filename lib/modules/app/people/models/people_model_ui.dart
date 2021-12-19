@@ -1,10 +1,6 @@
 import 'package:okji_sponsor/modules/app/profile/models/user_mode_iu.dart';
 
-enum PeopleType {
-  all,
-  friend,
-  subscribe,
-}
+import 'people_model.dart';
 
 class PeopleModelUI {
   final List<UserModelUI> allUsers;

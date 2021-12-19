@@ -10,13 +10,13 @@ _$_PeopleModelResponse _$$_PeopleModelResponseFromJson(
         Map<String, dynamic> json) =>
     _$_PeopleModelResponse(
       allUsers: (json['allUsers'] as List<dynamic>?)
-          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>?))
           .toList(),
       friendUsers: (json['friendUsers'] as List<dynamic>?)
-          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>?))
           .toList(),
       subscribeUsers: (json['subscribeUsers'] as List<dynamic>?)
-          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>?))
           .toList(),
       type: $enumDecodeNullable(_$PeopleTypeEnumMap, json['peopleType']),
     );
@@ -35,4 +35,5 @@ const _$PeopleTypeEnumMap = {
   PeopleType.all: 'all',
   PeopleType.friend: 'friend',
   PeopleType.subscribe: 'subscribe',
+  PeopleType.none: 'none',
 };

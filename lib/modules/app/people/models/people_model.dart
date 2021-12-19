@@ -1,11 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 
 import 'people_model_ui.dart';
 
 part 'people_model.freezed.dart';
 part 'people_model.g.dart';
+
+enum PeopleType {
+  all,
+  friend,
+  subscribe,
+  none,
+}
 
 @freezed
 class PeopleModelResponse with _$PeopleModelResponse {

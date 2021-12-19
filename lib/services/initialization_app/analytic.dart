@@ -54,9 +54,9 @@ class AnalyticAppEvents {
       try {
         final user = AppPreference.user;
         _analyzeModel = AnalyzeModel(
-          user.email ?? 'No Email',
-          user.name ?? 'No Name',
-          user.phone,
+          user.email?.value ?? 'No Email',
+          user.name?.value ?? 'No Name',
+          user.phone?.value,
         );
       } catch (_) {
         print(_);
