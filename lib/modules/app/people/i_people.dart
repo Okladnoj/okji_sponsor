@@ -19,14 +19,28 @@ class PeopleInteractor with BaseInteractor<PeopleModelUI> {
   Future<void> _init() async {
     sinkLoading.add(true);
 
-    await _loadData();
+    await _loadPeople();
+    await _loadFriends();
+    await _loadSubscribes();
     _updateUI();
     sinkLoading.add(false);
   }
 
-  Future<void> _loadData() async {
+  Future<void> _loadPeople() async {
     final result = await _api.getPeople();
     _model = _model.copyWith(allUsers: result);
+  }
+
+  Future<void> _loadFriends() async {
+    final friends = AppPreference.user.friends?.toSet() ?? {};
+    final result = await _api.getFriends(friends);
+    _model = _model.copyWith(friendUsers: result);
+  }
+
+  Future<void> _loadSubscribes() async {
+    final subscribes = AppPreference.user.subscribes?.toSet() ?? {};
+    final result = await _api.getSubscribes(subscribes);
+    _model = _model.copyWith(subscribeUsers: result);
   }
 
   Future<void> onSomeMethod() async {

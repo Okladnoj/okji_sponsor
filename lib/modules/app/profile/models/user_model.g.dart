@@ -39,6 +39,11 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       hip: json['hip'] == null
           ? null
           : UserIntProperty.fromJson(json['hip'] as Map<String, dynamic>?),
+      friends:
+          (json['friends'] as List<dynamic>?)?.map((e) => e as String).toSet(),
+      subscribes: (json['subscribes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toSet(),
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -54,6 +59,8 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'chest': instance.chest?.toJson(),
       'waist': instance.waist?.toJson(),
       'hip': instance.hip?.toJson(),
+      'friends': instance.friends?.toList(),
+      'subscribes': instance.subscribes?.toList(),
     };
 
 _$_UserIntProperty _$$_UserIntPropertyFromJson(Map<String, dynamic> json) =>

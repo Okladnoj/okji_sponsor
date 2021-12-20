@@ -4,7 +4,7 @@ import 'package:okji_sponsor/services/initialization_app/app_preference.dart';
 
 class AnalyticAppEvents {
   AnalyticAppEvents() {
-    _analytics = FirebaseAnalytics();
+    _analytics = FirebaseAnalytics.instance;
   }
   static late FirebaseAnalytics _analytics;
 

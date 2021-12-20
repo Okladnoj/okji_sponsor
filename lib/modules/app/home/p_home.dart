@@ -1,9 +1,9 @@
 import '../../../services/settings.dart';
-import 'components/w_home_drawer.dart';
-import 'components/w_home_title.dart';
-import 'components/w_user_avatar.dart';
 import 'i_home.dart';
 import 'models/home_model_ui.dart';
+import 'widgets/w_home_drawer.dart';
+import 'widgets/w_home_title.dart';
+import 'widgets/w_user_avatar.dart';
 
 class HomeP extends StatefulWidget {
   static const id = 'HomeP';

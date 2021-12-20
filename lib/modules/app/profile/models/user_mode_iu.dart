@@ -14,6 +14,8 @@ class UserModelUI {
   final UserPropertyUI<String> chest;
   final UserPropertyUI<String> waist;
   final UserPropertyUI<String> hip;
+  final Set<String> friends;
+  final Set<String> subscribes;
   final UserModel? model;
 
   UserModelUI(
@@ -28,6 +30,8 @@ class UserModelUI {
     this.chest,
     this.waist,
     this.hip,
+    this.friends,
+    this.subscribes,
     this.model,
   );
 }

@@ -1,4 +1,4 @@
-import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'modules/follow_root.dart';
 import 'services/initialization_app/analytic.dart';

@@ -27,4 +27,56 @@ class PeopleApi {
 
     return result;
   }
+
+  Future<List<UserModel>> getFriends(Set<String> friends) async {
+    List<UserModel> result = [];
+    if (friends.isEmpty) {
+      return result;
+    }
+    final collection = ProfileApi.collection;
+    final usersDoc = await collection.where('friends', whereIn: friends.toList()).get();
+    final usersDocs = usersDoc.docs
+        .map(
+          (e) => collection.doc(e.id).withConverter<UserModel>(
+                fromFirestore: (_, __) => UserModel.fromJson(_.data() ?? {}),
+                toFirestore: (_, __) => _.toJson(),
+              ),
+        )
+        .toList();
+
+    for (final doc in usersDocs) {
+      final _doc = (await doc.get()).data();
+      if (_doc != null) {
+        result.add(_doc);
+      }
+    }
+
+    return result;
+  }
+
+  Future<List<UserModel>> getSubscribes(Set<String> subscribes) async {
+    List<UserModel> result = [];
+    if (subscribes.isEmpty) {
+      return result;
+    }
+    final collection = ProfileApi.collection;
+    final usersDoc = await collection.where('subscribes', whereIn: subscribes.toList()).get();
+    final usersDocs = usersDoc.docs
+        .map(
+          (e) => collection.doc(e.id).withConverter<UserModel>(
+                fromFirestore: (_, __) => UserModel.fromJson(_.data() ?? {}),
+                toFirestore: (_, __) => _.toJson(),
+              ),
+        )
+        .toList();
+
+    for (final doc in usersDocs) {
+      final _doc = (await doc.get()).data();
+      if (_doc != null) {
+        result.add(_doc);
+      }
+    }
+
+    return result;
+  }
 }

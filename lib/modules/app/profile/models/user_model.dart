@@ -36,6 +36,8 @@ class UserModel with _$UserModel {
     @JsonKey(name: 'chest') UserIntProperty? chest,
     @JsonKey(name: 'waist') UserIntProperty? waist,
     @JsonKey(name: 'hip') UserIntProperty? hip,
+    @JsonKey(name: 'friends') Set<String>? friends,
+    @JsonKey(name: 'subscribes') Set<String>? subscribes,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic>? json) => _$UserModelFromJson(json ?? {});
@@ -85,6 +87,8 @@ extension ToUserModelUI on UserModel {
       UserPropertyUI<String>(_parsMillimeter(chest?.value), chest?.access ?? PeopleType.none),
       UserPropertyUI<String>(_parsMillimeter(waist?.value), waist?.access ?? PeopleType.none),
       UserPropertyUI<String>(_parsMillimeter(hip?.value), hip?.access ?? PeopleType.none),
+      friends ?? {},
+      friends ?? {},
       this,
     );
   }
