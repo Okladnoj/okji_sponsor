@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 import 'package:okji_sponsor/services/settings.dart';
@@ -21,5 +23,7 @@ class ProfileApi {
     final firDoc = model.toDocumentReference();
     await firDoc.set(model);
     AppPreference.user = model;
+    final _sUser = jsonEncode(AppPreference.user.toJson());
+    await AppPreferences.setString(AppPreferencesString.user, _sUser);
   }
 }

@@ -191,8 +191,8 @@ class _$_TruckModel implements _TruckModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TruckModel &&
-            (identical(other.currentPoint, currentPoint) ||
-                other.currentPoint == currentPoint) &&
+            const DeepCollectionEquality()
+                .equals(other.currentPoint, currentPoint) &&
             const DeepCollectionEquality()
                 .equals(other.currentPoints, currentPoints) &&
             const DeepCollectionEquality().equals(other.midPoints, midPoints));
@@ -201,7 +201,7 @@ class _$_TruckModel implements _TruckModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      currentPoint,
+      const DeepCollectionEquality().hash(currentPoint),
       const DeepCollectionEquality().hash(currentPoints),
       const DeepCollectionEquality().hash(midPoints));
 
@@ -485,19 +485,22 @@ class _$_CurrentPointModel implements _CurrentPointModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CurrentPointModel &&
-            (identical(other.accelerometer, accelerometer) ||
-                other.accelerometer == accelerometer) &&
-            (identical(other.userAccelerometer, userAccelerometer) ||
-                other.userAccelerometer == userAccelerometer) &&
-            (identical(other.gyroscope, gyroscope) ||
-                other.gyroscope == gyroscope) &&
-            (identical(other.magnetometer, magnetometer) ||
-                other.magnetometer == magnetometer));
+            const DeepCollectionEquality()
+                .equals(other.accelerometer, accelerometer) &&
+            const DeepCollectionEquality()
+                .equals(other.userAccelerometer, userAccelerometer) &&
+            const DeepCollectionEquality().equals(other.gyroscope, gyroscope) &&
+            const DeepCollectionEquality()
+                .equals(other.magnetometer, magnetometer));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, accelerometer, userAccelerometer, gyroscope, magnetometer);
+      runtimeType,
+      const DeepCollectionEquality().hash(accelerometer),
+      const DeepCollectionEquality().hash(userAccelerometer),
+      const DeepCollectionEquality().hash(gyroscope),
+      const DeepCollectionEquality().hash(magnetometer));
 
   @JsonKey(ignore: true)
   @override
@@ -702,13 +705,17 @@ class _$_VolumeModel extends _VolumeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _VolumeModel &&
-            (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y) &&
-            (identical(other.z, z) || other.z == z));
+            const DeepCollectionEquality().equals(other.x, x) &&
+            const DeepCollectionEquality().equals(other.y, y) &&
+            const DeepCollectionEquality().equals(other.z, z));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, x, y, z);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(x),
+      const DeepCollectionEquality().hash(y),
+      const DeepCollectionEquality().hash(z));
 
   @JsonKey(ignore: true)
   @override

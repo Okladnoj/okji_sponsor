@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.7+7
+version: 1.0.9+9
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -29,6 +29,8 @@ dependencies:
   firebase_analytics: ^9.0.4
   mask_text_input_formatter: ^2.0.0
   numberpicker: ^2.1.1
+  flutter_svg: ^1.0.0
+
   
 
 dev_dependencies:
@@ -58,6 +60,7 @@ flutter:
     - assets/images/
     - assets/splash/
     - assets/icon/
+    - assets/svg/
     - lib/services/localization/langs/
 
 # flutter pub pub run flutter_native_splash:create

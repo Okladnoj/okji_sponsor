@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 import '../../services/settings.dart';
-import 'ink_custom_simple.dart';
 
 class RadioButton extends StatelessWidget {
   final double size;

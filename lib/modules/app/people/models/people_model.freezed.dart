@@ -202,7 +202,7 @@ class _$_PeopleModelResponse implements _PeopleModelResponse {
                 .equals(other.friendUsers, friendUsers) &&
             const DeepCollectionEquality()
                 .equals(other.subscribeUsers, subscribeUsers) &&
-            (identical(other.type, type) || other.type == type));
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @override
@@ -211,7 +211,7 @@ class _$_PeopleModelResponse implements _PeopleModelResponse {
       const DeepCollectionEquality().hash(allUsers),
       const DeepCollectionEquality().hash(friendUsers),
       const DeepCollectionEquality().hash(subscribeUsers),
-      type);
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override

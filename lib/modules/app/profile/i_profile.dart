@@ -44,8 +44,6 @@ class ProfileInteractor with BaseInteractor<UserModelUI> {
 
   void onChangePhone(String? value) {
     final cleanPhone = Config.phoneMask.unmaskText(value ?? '');
-    final t2 = Config.phoneMask.maskText(value ?? '');
-
     _model = _model.copyWith(phone: _model.phone?.copyWith(value: cleanPhone));
     _updateUI();
   }
@@ -77,6 +75,11 @@ class ProfileInteractor with BaseInteractor<UserModelUI> {
 
   void onChangePrivatePhone(PeopleType? value) {
     _model = _model.copyWith(phone: _model.phone?.copyWith(access: value));
+    _updateUI();
+  }
+
+  void onChangePrivateAvatar(PeopleType? value) {
+    _model = _model.copyWith(avatar: _model.avatar?.copyWith(access: value));
     _updateUI();
   }
 

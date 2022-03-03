@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:okji_sponsor/services/initialization_app/analytic.dart';
 
 import 'controller.dart';
-import 'dialog.dart';
-import 'loading_overlay.dart';
+import 'dialogs/dialog.dart';
+import 'dialogs/loading_overlay.dart';
+import 'observer.dart';
 
 class AppPage {
   final String name;
@@ -18,9 +17,10 @@ class AppPage {
 abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T>
     with ErrorHandlerState<T>, LoadingHandlerState<T>
     implements BackPressHandler<T> {
-  late GlobalKey<NavigatorState>? _navKey;
-  late PopScopeHostSubscription? _popScopeHostSubscription;
-  late RouteObserver? _routeObserver;
+  late GlobalKey<NavigatorState> _navKey;
+  late PopScopeHostSubscription _popScopeHostSubscription;
+  late RouteObserver _routeObserver;
+  final CustomObserver _customObserver = CustomObserver();
 
   List<String>? _navStack;
 
@@ -37,7 +37,7 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
 
   @override
   void dispose() {
-    _popScopeHostSubscription?.dispose();
+    _popScopeHostSubscription.dispose();
     super.dispose();
   }
 
@@ -50,8 +50,8 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
       return true;
     }
     final nav = _navigator();
-    if (nav!.canPop()) {
-      nav.pop();
+    if (nav?.canPop() ?? false) {
+      nav?.pop();
       return true;
     } else {
       return false;
@@ -70,11 +70,11 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
   Widget build(BuildContext context) {
     return Navigator(
       key: _navKey,
-      observers: [_routeObserver ?? RouteObserver<Route<dynamic>>()],
+      observers: [_routeObserver, _customObserver],
       onGenerateRoute: (s) {
         final AppPage page = createInitialPage();
         _navStack?.add(page.name);
-        AnalyticAppEvents.setEventStringWithMap('screen_view', {'nav_stack': _navStack?.join('/')});
+        // AnalyticAppEvents.setScreenWithMap(page.widget.toString(), page.name, {'nav_stack': _navStack?.join('/')});
         return CupertinoPageRoute(builder: (s) => page.widget, settings: RouteSettings(name: page.name));
       },
     );
@@ -176,11 +176,14 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
   }
 
   String generateRouteName([String? name]) {
+    String _name = '';
     if (name == null) {
-      return "route#${++_routeId}";
+      _name = 'route#${++_routeId}';
     } else {
-      return name;
+      _name = name;
     }
+
+    return _name;
   }
 
   bool? canPop() => _navigator()?.canPop();
@@ -189,9 +192,11 @@ abstract class BaseFlowControllerState<T extends StatefulWidget> extends State<T
 
   bool isDisplayed(String routeName) => _navStack?.last == routeName;
 
-  NavigatorState? _navigator() => _navKey?.currentState;
+  NavigatorState? _navigator() {
+    return _navKey.currentState;
+  }
 
-  RouteObserver? routeObserver() => _routeObserver;
+  RouteObserver routeObserver() => _routeObserver;
 
   static const String _ROUTE_ERROR = 'route_error';
 

@@ -36,6 +36,10 @@ class HomeInteractor with BaseInteractor<HomeModelUI> {
     await _deps?.onNavigateToPeopleP();
   }
 
+  Future<void> onNavigateToAdministrationP() async {
+    await _deps?.onNavigateToAdministrationP();
+  }
+
   Future<void> onNavigateToMapP() async {
     await _deps?.onNavigateToMapP();
   }

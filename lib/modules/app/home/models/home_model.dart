@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 
 part 'home_model.freezed.dart';

@@ -45,20 +45,28 @@ class Strings {
   String get phoneTitle => _getText('phoneTitle');
   String get phoneHint => _getText('phoneHint');
   String get nameTitle => _getText('nameTitle');
+  String get avatarTitle => _getText('avatarTitle');
   String get nameHint => _getText('nameHint');
   String get updateProfile => _getText('updateProfile');
   String get weightTitle => _getText('weightTitle');
   String get heightTitle => _getText('heightTitle');
   String get profileSetting => _getText('profileSetting');
   String get people => _getText('people');
+  String get peopleRequest => _getText('peopleRequest');
   String get all => _getText('all');
   String get friend => _getText('friend');
   String get subscribe => _getText('subscribe');
+  String get blackList => _getText('blackList');
   String get peopleEmpty => _getText('peopleEmpty');
+  String get emptyList => _getText('emptyList');
   String get privateAll => _getText('privateAll');
   String get privateFriend => _getText('privateFriend');
   String get privateSubscribe => _getText('privateSubscribe');
   String get privateNone => _getText('privateNone');
+  String get administration => _getText('administration');
+  String get emailTitle => _getText('emailTitle');
+  String get addToFriend => _getText('addToFriend');
+  String get onSubscribe => _getText('onSubscribe');
 
   String get emptyString => _getText('emptyString');
 

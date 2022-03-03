@@ -43,8 +43,8 @@ class PeopleInteractor with BaseInteractor<PeopleModelUI> {
     _model = _model.copyWith(subscribeUsers: result);
   }
 
-  Future<void> onSomeMethod() async {
-    await _deps?.onSomeMethod();
+  Future<void> onNavigateToPersonP(UserModel user) async {
+    await _deps?.onNavigateToPersonP(user);
   }
 
   void onChangeUsersSet(PeopleType type) {
@@ -63,6 +63,27 @@ class PeopleInteractor with BaseInteractor<PeopleModelUI> {
       _model.subscribeUsers?.map((e) => e.toUI()).toList() ?? [],
       _model.type ?? PeopleType.all,
     );
+  }
+
+  Future<void> updatePeople() async {
+    sinkLoading.add(true);
+    final listUpdateUsers = (_model.allUsers ?? []).map((e) {
+      return e.copyWith(
+        name: UserStringProperty(value: e.name?.value, access: PeopleType.all),
+        email: UserStringProperty(value: e.email?.value, access: PeopleType.subscribe),
+        avatar: UserStringProperty(value: e.avatar?.value, access: PeopleType.all),
+        phone: UserStringProperty(value: e.phone?.value, access: PeopleType.friend),
+        age: UserIntProperty(value: e.age?.value, access: PeopleType.friend),
+        height: UserIntProperty(value: e.height?.value, access: PeopleType.friend),
+        weight: UserIntProperty(value: e.weight?.value, access: PeopleType.friend),
+        hip: UserIntProperty(value: e.hip?.value, access: PeopleType.friend),
+        waist: UserIntProperty(value: e.waist?.value, access: PeopleType.friend),
+        chest: UserIntProperty(value: e.chest?.value, access: PeopleType.friend),
+      );
+    }).toList();
+
+    await _api.updateUsers(listUpdateUsers);
+    sinkLoading.add(false);
   }
 
   PeopleListener? get _deps => _state.context.findAncestorStateOfType<PeopleListener>();

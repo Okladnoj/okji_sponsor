@@ -4,7 +4,6 @@ import 'package:okji_sponsor/services/settings.dart';
 import 'i_people.dart';
 import 'models/people_model.dart';
 import 'models/people_model_ui.dart';
-import 'widgets/w_people_title.dart';
 
 class PeopleP extends StatefulWidget {
   static const id = 'PeopleP';
@@ -83,6 +82,7 @@ class PeoplePState extends State<PeopleP> with ErrorHandlerState {
           ),
           child: Text(
             label,
+            textAlign: TextAlign.center,
             style: DesignStyles.textCustom(
               fontSize: 18,
               fontWeight: FontWeight.w800,
@@ -122,13 +122,42 @@ class PeoplePState extends State<PeopleP> with ErrorHandlerState {
       );
     }
     final List<Widget> children = modelUI.users.map((e) {
-      return PersonAvatarW(user: e);
+      return PersonAvatarW(
+        user: e,
+        onTap: () => _interactor.onNavigateToPersonP(e.model!),
+      );
     }).toList();
     return Column(
       children: [
         const SizedBox(height: 65),
         ...children,
+        // _buildUsersFixUpdate(),
+        const SizedBox(height: 65),
       ],
+    );
+  }
+
+  Widget _buildUsersFixUpdate() {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: InkCustomSimple(
+        onTap: () {
+          _interactor.updatePeople();
+        },
+        child: Container(
+          height: 50,
+          decoration: DesignStyles.buttonDecoration(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Обновить доступность полей всех юзеров',
+                style: DesignStyles.textCustom(),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

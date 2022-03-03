@@ -3,7 +3,7 @@ import 'dart:io';
 
 ///dart run wg.dart && flutter pub run build_runner build --delete-conflicting-outputs
 ///
-const nameModule = 'People';
+const nameModule = 'Person1';
 const namePackage = 'okji_sponsor';
 const directory = 'lib/modules/app';
 
@@ -94,7 +94,7 @@ import 's_$fName.dart';
 
 class ${nameModule}Interactor with BaseInteractor<${nameModule}ModelUI> {
   late final ${nameModule}PState _state;
-  late final ${nameModule}Api _api;
+  late final ${nameModule}Api _api = ${nameModule}Api();
   ${nameModule}ModelResponse _model = const ${nameModule}ModelResponse();
 
   ${nameModule}Interactor(this._state) {
@@ -103,7 +103,6 @@ class ${nameModule}Interactor with BaseInteractor<${nameModule}ModelUI> {
 
   Future<void> _init() async {
     sinkLoading.add(true);
-    _api = ${nameModule}Api();
     await _loadData();
     _updateUI();
     sinkLoading.add(false);
@@ -207,7 +206,7 @@ abstract class ${nameModule}Listener<T extends StatefulWidget> implements State<
 }
 ''';
 String get tContent => '''
-import 'package:okji_sponsor/services/settings.dart';
+import 'package:$namePackage/services/settings.dart';
 
 import '../i_$fName.dart';
 

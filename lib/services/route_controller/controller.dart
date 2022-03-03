@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'dialog.dart';
+import 'dialogs/dialog.dart';
 import 'flow_controller.dart';
 
 abstract class BackPressHandler<T extends StatefulWidget> implements State<T> {

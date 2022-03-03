@@ -34,7 +34,10 @@ class _$UserModelTearOff {
       @JsonKey(name: 'waist') UserIntProperty? waist,
       @JsonKey(name: 'hip') UserIntProperty? hip,
       @JsonKey(name: 'friends') Set<String>? friends,
-      @JsonKey(name: 'subscribes') Set<String>? subscribes}) {
+      @JsonKey(name: 'subscribes') Set<String>? subscribes,
+      @JsonKey(name: 'friendsRequest') Set<String>? friendsRequest,
+      @JsonKey(name: 'subscribesRequest') Set<String>? subscribesRequest,
+      @JsonKey(name: 'blackList') Set<String>? blackList}) {
     return _UserModel(
       id: id,
       name: name,
@@ -49,6 +52,9 @@ class _$UserModelTearOff {
       hip: hip,
       friends: friends,
       subscribes: subscribes,
+      friendsRequest: friendsRequest,
+      subscribesRequest: subscribesRequest,
+      blackList: blackList,
     );
   }
 
@@ -88,6 +94,12 @@ mixin _$UserModel {
   Set<String>? get friends => throw _privateConstructorUsedError;
   @JsonKey(name: 'subscribes')
   Set<String>? get subscribes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'friendsRequest')
+  Set<String>? get friendsRequest => throw _privateConstructorUsedError;
+  @JsonKey(name: 'subscribesRequest')
+  Set<String>? get subscribesRequest => throw _privateConstructorUsedError;
+  @JsonKey(name: 'blackList')
+  Set<String>? get blackList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -112,7 +124,10 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'waist') UserIntProperty? waist,
       @JsonKey(name: 'hip') UserIntProperty? hip,
       @JsonKey(name: 'friends') Set<String>? friends,
-      @JsonKey(name: 'subscribes') Set<String>? subscribes});
+      @JsonKey(name: 'subscribes') Set<String>? subscribes,
+      @JsonKey(name: 'friendsRequest') Set<String>? friendsRequest,
+      @JsonKey(name: 'subscribesRequest') Set<String>? subscribesRequest,
+      @JsonKey(name: 'blackList') Set<String>? blackList});
 
   $UserStringPropertyCopyWith<$Res>? get name;
   $UserStringPropertyCopyWith<$Res>? get phone;
@@ -149,6 +164,9 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? hip = freezed,
     Object? friends = freezed,
     Object? subscribes = freezed,
+    Object? friendsRequest = freezed,
+    Object? subscribesRequest = freezed,
+    Object? blackList = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -202,6 +220,18 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       subscribes: subscribes == freezed
           ? _value.subscribes
           : subscribes // ignore: cast_nullable_to_non_nullable
+              as Set<String>?,
+      friendsRequest: friendsRequest == freezed
+          ? _value.friendsRequest
+          : friendsRequest // ignore: cast_nullable_to_non_nullable
+              as Set<String>?,
+      subscribesRequest: subscribesRequest == freezed
+          ? _value.subscribesRequest
+          : subscribesRequest // ignore: cast_nullable_to_non_nullable
+              as Set<String>?,
+      blackList: blackList == freezed
+          ? _value.blackList
+          : blackList // ignore: cast_nullable_to_non_nullable
               as Set<String>?,
     ));
   }
@@ -336,7 +366,10 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       @JsonKey(name: 'waist') UserIntProperty? waist,
       @JsonKey(name: 'hip') UserIntProperty? hip,
       @JsonKey(name: 'friends') Set<String>? friends,
-      @JsonKey(name: 'subscribes') Set<String>? subscribes});
+      @JsonKey(name: 'subscribes') Set<String>? subscribes,
+      @JsonKey(name: 'friendsRequest') Set<String>? friendsRequest,
+      @JsonKey(name: 'subscribesRequest') Set<String>? subscribesRequest,
+      @JsonKey(name: 'blackList') Set<String>? blackList});
 
   @override
   $UserStringPropertyCopyWith<$Res>? get name;
@@ -384,6 +417,9 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? hip = freezed,
     Object? friends = freezed,
     Object? subscribes = freezed,
+    Object? friendsRequest = freezed,
+    Object? subscribesRequest = freezed,
+    Object? blackList = freezed,
   }) {
     return _then(_UserModel(
       id: id == freezed
@@ -438,6 +474,18 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.subscribes
           : subscribes // ignore: cast_nullable_to_non_nullable
               as Set<String>?,
+      friendsRequest: friendsRequest == freezed
+          ? _value.friendsRequest
+          : friendsRequest // ignore: cast_nullable_to_non_nullable
+              as Set<String>?,
+      subscribesRequest: subscribesRequest == freezed
+          ? _value.subscribesRequest
+          : subscribesRequest // ignore: cast_nullable_to_non_nullable
+              as Set<String>?,
+      blackList: blackList == freezed
+          ? _value.blackList
+          : blackList // ignore: cast_nullable_to_non_nullable
+              as Set<String>?,
     ));
   }
 }
@@ -459,7 +507,10 @@ class _$_UserModel implements _UserModel {
       @JsonKey(name: 'waist') this.waist,
       @JsonKey(name: 'hip') this.hip,
       @JsonKey(name: 'friends') this.friends,
-      @JsonKey(name: 'subscribes') this.subscribes});
+      @JsonKey(name: 'subscribes') this.subscribes,
+      @JsonKey(name: 'friendsRequest') this.friendsRequest,
+      @JsonKey(name: 'subscribesRequest') this.subscribesRequest,
+      @JsonKey(name: 'blackList') this.blackList});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -503,10 +554,19 @@ class _$_UserModel implements _UserModel {
   @override
   @JsonKey(name: 'subscribes')
   final Set<String>? subscribes;
+  @override
+  @JsonKey(name: 'friendsRequest')
+  final Set<String>? friendsRequest;
+  @override
+  @JsonKey(name: 'subscribesRequest')
+  final Set<String>? subscribesRequest;
+  @override
+  @JsonKey(name: 'blackList')
+  final Set<String>? blackList;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, name: $name, phone: $phone, email: $email, avatar: $avatar, age: $age, height: $height, weight: $weight, chest: $chest, waist: $waist, hip: $hip, friends: $friends, subscribes: $subscribes)';
+    return 'UserModel(id: $id, name: $name, phone: $phone, email: $email, avatar: $avatar, age: $age, height: $height, weight: $weight, chest: $chest, waist: $waist, hip: $hip, friends: $friends, subscribes: $subscribes, friendsRequest: $friendsRequest, subscribesRequest: $subscribesRequest, blackList: $blackList)';
   }
 
   @override
@@ -514,38 +574,46 @@ class _$_UserModel implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.chest, chest) || other.chest == chest) &&
-            (identical(other.waist, waist) || other.waist == waist) &&
-            (identical(other.hip, hip) || other.hip == hip) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.avatar, avatar) &&
+            const DeepCollectionEquality().equals(other.age, age) &&
+            const DeepCollectionEquality().equals(other.height, height) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
+            const DeepCollectionEquality().equals(other.chest, chest) &&
+            const DeepCollectionEquality().equals(other.waist, waist) &&
+            const DeepCollectionEquality().equals(other.hip, hip) &&
             const DeepCollectionEquality().equals(other.friends, friends) &&
             const DeepCollectionEquality()
-                .equals(other.subscribes, subscribes));
+                .equals(other.subscribes, subscribes) &&
+            const DeepCollectionEquality()
+                .equals(other.friendsRequest, friendsRequest) &&
+            const DeepCollectionEquality()
+                .equals(other.subscribesRequest, subscribesRequest) &&
+            const DeepCollectionEquality().equals(other.blackList, blackList));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      name,
-      phone,
-      email,
-      avatar,
-      age,
-      height,
-      weight,
-      chest,
-      waist,
-      hip,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(avatar),
+      const DeepCollectionEquality().hash(age),
+      const DeepCollectionEquality().hash(height),
+      const DeepCollectionEquality().hash(weight),
+      const DeepCollectionEquality().hash(chest),
+      const DeepCollectionEquality().hash(waist),
+      const DeepCollectionEquality().hash(hip),
       const DeepCollectionEquality().hash(friends),
-      const DeepCollectionEquality().hash(subscribes));
+      const DeepCollectionEquality().hash(subscribes),
+      const DeepCollectionEquality().hash(friendsRequest),
+      const DeepCollectionEquality().hash(subscribesRequest),
+      const DeepCollectionEquality().hash(blackList));
 
   @JsonKey(ignore: true)
   @override
@@ -572,7 +640,10 @@ abstract class _UserModel implements UserModel {
       @JsonKey(name: 'waist') UserIntProperty? waist,
       @JsonKey(name: 'hip') UserIntProperty? hip,
       @JsonKey(name: 'friends') Set<String>? friends,
-      @JsonKey(name: 'subscribes') Set<String>? subscribes}) = _$_UserModel;
+      @JsonKey(name: 'subscribes') Set<String>? subscribes,
+      @JsonKey(name: 'friendsRequest') Set<String>? friendsRequest,
+      @JsonKey(name: 'subscribesRequest') Set<String>? subscribesRequest,
+      @JsonKey(name: 'blackList') Set<String>? blackList}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -616,6 +687,15 @@ abstract class _UserModel implements UserModel {
   @override
   @JsonKey(name: 'subscribes')
   Set<String>? get subscribes;
+  @override
+  @JsonKey(name: 'friendsRequest')
+  Set<String>? get friendsRequest;
+  @override
+  @JsonKey(name: 'subscribesRequest')
+  Set<String>? get subscribesRequest;
+  @override
+  @JsonKey(name: 'blackList')
+  Set<String>? get blackList;
   @override
   @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith =>
@@ -766,12 +846,15 @@ class _$_UserIntProperty implements _UserIntProperty {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserIntProperty &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.access, access) || other.access == access));
+            const DeepCollectionEquality().equals(other.value, value) &&
+            const DeepCollectionEquality().equals(other.access, access));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value, access);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(value),
+      const DeepCollectionEquality().hash(access));
 
   @JsonKey(ignore: true)
   @override
@@ -948,12 +1031,15 @@ class _$_UserStringProperty implements _UserStringProperty {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserStringProperty &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.access, access) || other.access == access));
+            const DeepCollectionEquality().equals(other.value, value) &&
+            const DeepCollectionEquality().equals(other.access, access));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value, access);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(value),
+      const DeepCollectionEquality().hash(access));
 
   @JsonKey(ignore: true)
   @override

@@ -34,7 +34,7 @@ class PeopleApi {
       return result;
     }
     final collection = ProfileApi.collection;
-    final usersDoc = await collection.where('friends', whereIn: friends.toList()).get();
+    final usersDoc = await collection.where('id', whereIn: friends.toList()).get();
     final usersDocs = usersDoc.docs
         .map(
           (e) => collection.doc(e.id).withConverter<UserModel>(
@@ -60,7 +60,7 @@ class PeopleApi {
       return result;
     }
     final collection = ProfileApi.collection;
-    final usersDoc = await collection.where('subscribes', whereIn: subscribes.toList()).get();
+    final usersDoc = await collection.where('id', whereIn: subscribes.toList()).get();
     final usersDocs = usersDoc.docs
         .map(
           (e) => collection.doc(e.id).withConverter<UserModel>(
@@ -78,5 +78,12 @@ class PeopleApi {
     }
 
     return result;
+  }
+
+  Future<void> updateUsers(List<UserModel> listUpdateUsers) async {
+    for (final model in listUpdateUsers) {
+      final firDoc = model.toDocumentReference();
+      await firDoc.set(model);
+    }
   }
 }

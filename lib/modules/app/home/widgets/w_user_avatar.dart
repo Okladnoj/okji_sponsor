@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:okji_sponsor/modules/app/profile/models/user_mode_iu.dart';
 import 'package:okji_sponsor/services/settings.dart';
 
@@ -17,12 +18,12 @@ class UserAvatarW extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: InkCustomSimple(
-        borderRadius: BorderRadius.circular(60),
+        borderRadius: BorderRadius.circular(_size),
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: DesignStyles.buttonDecoration(
-            borderRadius: 60,
+            borderRadius: _size,
             blurRadius: 5,
             offset: const Offset(1, 2),
             colorBoxShadow: DesignStyles.black,
@@ -31,10 +32,10 @@ class UserAvatarW extends StatelessWidget {
           child: Row(
             children: [
               CircleAvatar(
-                radius: 50,
+                radius: _size - 10,
                 backgroundColor: DesignStyles.colorDark,
                 foregroundImage: CachedNetworkImageProvider(user.avatar.value),
-                child: Text(user.name.value),
+                child: SvgPicture.asset('assets/svg/empty_photo.svg'),
               ),
               const SizedBox(width: 15),
               Expanded(
@@ -42,13 +43,15 @@ class UserAvatarW extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          user.name.value,
-                          style: DesignStyles.textCustom(
-                            fontSize: 18,
-                            color: DesignStyles.colorLight,
-                            fontWeight: FontWeight.w900,
-                            isHeadline: true,
+                        Expanded(
+                          child: Text(
+                            user.name.value,
+                            style: DesignStyles.textCustom(
+                              fontSize: 18,
+                              color: DesignStyles.colorLight,
+                              fontWeight: FontWeight.w900,
+                              isHeadline: true,
+                            ),
                           ),
                         ),
                       ],
@@ -56,12 +59,14 @@ class UserAvatarW extends StatelessWidget {
                     const SizedBox(height: 15),
                     Row(
                       children: [
-                        Text(
-                          user.email.value,
-                          style: DesignStyles.textCustom(
-                            fontSize: 15,
-                            color: DesignStyles.colorLight,
-                            fontWeight: FontWeight.w600,
+                        Expanded(
+                          child: Text(
+                            user.email.value,
+                            style: DesignStyles.textCustom(
+                              fontSize: 15,
+                              color: DesignStyles.colorLight,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],
@@ -69,12 +74,14 @@ class UserAvatarW extends StatelessWidget {
                     const SizedBox(height: 15),
                     Row(
                       children: [
-                        Text(
-                          user.phone.value,
-                          style: DesignStyles.textCustom(
-                            fontSize: 15,
-                            color: DesignStyles.colorLight,
-                            fontWeight: FontWeight.w600,
+                        Expanded(
+                          child: Text(
+                            user.phone.value,
+                            style: DesignStyles.textCustom(
+                              fontSize: 15,
+                              color: DesignStyles.colorLight,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],
@@ -82,10 +89,17 @@ class UserAvatarW extends StatelessWidget {
                   ],
                 ),
               ),
+              Icon(
+                Icons.edit_outlined,
+                size: _size / 1.5,
+                color: DesignStyles.colorLight,
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  static const double _size = 60;
 }

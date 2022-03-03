@@ -1,10 +1,14 @@
+import 'package:okji_sponsor/modules/app/profile/models/user_model.dart';
 import 'package:okji_sponsor/modules/app/profile/p_profile.dart';
 import 'package:okji_sponsor/modules/app/truck/p_truck.dart';
 
 import '../../services/settings.dart';
+import 'administration/p_administration.dart';
 import 'home/p_home.dart';
 import 'home/s_home.dart';
 import 'people/p_people.dart';
+import 'people/s_people.dart';
+import 'person/p_person.dart';
 import 'profile/s_profile.dart';
 
 class FollowControllerApp extends StatefulWidget {
@@ -18,6 +22,7 @@ class FollowControllerApp extends StatefulWidget {
 class _FollowControllerAppState extends BaseFlowControllerState<FollowControllerApp>
     implements //
         HomeListener<FollowControllerApp>,
+        PeopleListener<FollowControllerApp>,
         ProfileListener<FollowControllerApp> {
   @override
   @override
@@ -49,5 +54,15 @@ class _FollowControllerAppState extends BaseFlowControllerState<FollowController
   @override
   Future<R?> onNavigateToPeopleP<R>() async {
     return await pushSimple<R>(() => const PeopleP(), name: PeopleP.id);
+  }
+
+  @override
+  Future<R?> onNavigateToAdministrationP<R>() async {
+    return await pushSimple<R>(() => const AdministrationP(), name: AdministrationP.id);
+  }
+
+  @override
+  Future<R?> onNavigateToPersonP<R>(UserModel user) async {
+    return await pushSimple<R>(() => PersonP(user: user), name: PersonP.id);
   }
 }

@@ -8,6 +8,8 @@ class AppPreference {
   static String token = '';
   static UserModel user = const UserModel();
   static const baseUrl = 'https://taptap.phish.xlab13.com/';
+  static const shakeClientID = 'HZbVu8jnBgStR4GXqO7BuzU532tYqlfjFQqSjnjH';
+  static const shakeClientSecret = 'vp7tL3mAF6fALczVcXroyGzIWA7oUTOX83bGw9Qd2N1eP75f857HM9P';
   static Future<void> init() async {
     await _getLoginStatus();
     await _getUser();

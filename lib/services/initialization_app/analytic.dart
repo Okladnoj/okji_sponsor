@@ -1,6 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:intl/intl.dart';
-import 'package:okji_sponsor/services/initialization_app/app_preference.dart';
+
+import '../../services/initialization_app/app_preference.dart';
 
 class AnalyticAppEvents {
   AnalyticAppEvents() {
@@ -20,7 +21,7 @@ class AnalyticAppEvents {
     await _checkAnalyzer();
     _setIdenticInfo(parameters);
     try {
-      await _analytics.logEvent(name: name, parameters: parameters);
+      await _logEvent(name, parameters);
     } catch (e) {
       print(e);
     }
@@ -32,7 +33,7 @@ class AnalyticAppEvents {
     _setIdenticInfo(parameters);
     try {
       parameters['second'] = seconds ?? 0;
-      await _analytics.logEvent(name: name, parameters: parameters);
+      await _logEvent(name, parameters);
     } catch (e) {
       print(e);
     }
@@ -42,10 +43,29 @@ class AnalyticAppEvents {
     await _checkAnalyzer();
     _setIdenticInfo(parameters);
     try {
-      await _analytics.logEvent(name: name, parameters: parameters);
+      await _logEvent(name, parameters);
     } catch (e) {
       print(e);
     }
+  }
+
+  static Future<void> setScreenWithMap(
+    String? screenName,
+    String? routStack,
+    Map<String, Object?> parameters,
+  ) async {
+    await _checkAnalyzer();
+    _setIdenticInfo(parameters);
+    try {
+      //  _analytics.setCurrentScreen(screenName: screenName, screenClassOverride: routStack ?? '/');
+      // Shake.setDefaultScreen(ShakeScreen.newTicket);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  static Future<void> _logEvent(String name, Map<String, Object?> parameters) async {
+    await _analytics.logEvent(name: name, parameters: parameters);
   }
 
   static Future<void> _checkAnalyzer() async {

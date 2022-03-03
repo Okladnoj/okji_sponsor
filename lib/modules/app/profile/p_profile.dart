@@ -2,6 +2,7 @@ import 'package:okji_sponsor/services/settings.dart';
 
 import 'i_profile.dart';
 import 'models/user_mode_iu.dart';
+import 'widgets/w_input_avatar.dart';
 import 'widgets/w_input_hight.dart';
 import 'widgets/w_input_name.dart';
 import 'widgets/w_input_phone.dart';
@@ -62,6 +63,10 @@ class ProfilePState extends State<ProfileP> with ErrorHandlerState {
     }
     return Column(
       children: [
+        InputAvatarW(
+          interactor: _interactor,
+          modelUI: _modelUI!,
+        ),
         InputNameW(
           interactor: _interactor,
           modelUI: _modelUI!,

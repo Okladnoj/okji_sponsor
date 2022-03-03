@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../settings/design_styles.dart';
+import '../../settings/design_styles.dart';
 
 class DesignDialog extends StatelessWidget {
   final Widget content;

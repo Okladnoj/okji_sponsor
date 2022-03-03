@@ -16,6 +16,9 @@ class UserModelUI {
   final UserPropertyUI<String> hip;
   final Set<String> friends;
   final Set<String> subscribes;
+  final Set<String> friendsRequest;
+  final Set<String> subscribesRequest;
+  final Set<String> blackList;
   final UserModel? model;
 
   UserModelUI(
@@ -32,6 +35,9 @@ class UserModelUI {
     this.hip,
     this.friends,
     this.subscribes,
+    this.friendsRequest,
+    this.subscribesRequest,
+    this.blackList,
     this.model,
   );
 }

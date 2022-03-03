@@ -11,6 +11,8 @@ linter:
     avoid_print: false
     sort_pub_dependencies: false
     use_named_constants: false
+    lines_longer_than_80_chars: false
+    always_use_package_imports: false
 
 analyzer:
   exclude:

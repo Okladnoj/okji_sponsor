@@ -1,10 +1,10 @@
-import 'dart:async';
 import 'dart:convert';
 
 import '../../../services/settings.dart';
 import '../../modules/app/profile/models/user_mode_iu.dart';
 import '../../modules/app/profile/models/user_model.dart';
 import '../../modules/login/s_login.dart';
+import '../app/people/models/people_model.dart';
 import 'domain/login_api.dart';
 import 'p_login.dart';
 
@@ -36,10 +36,16 @@ class LoginInteractor with BaseInteractor<UserModelUI> {
         user.phoneNumber;
         _model = _model.copyWith(
           id: user.uid,
-          name: UserStringProperty(value: user.displayName),
-          email: UserStringProperty(value: user.email),
-          avatar: UserStringProperty(value: user.photoURL),
-          phone: UserStringProperty(value: user.phoneNumber),
+          name: UserStringProperty(value: user.displayName, access: PeopleType.all),
+          email: UserStringProperty(value: user.email, access: PeopleType.subscribe),
+          avatar: UserStringProperty(value: user.photoURL, access: PeopleType.all),
+          phone: UserStringProperty(value: user.phoneNumber, access: PeopleType.friend),
+          age: const UserIntProperty(access: PeopleType.friend),
+          height: const UserIntProperty(access: PeopleType.friend),
+          weight: const UserIntProperty(access: PeopleType.friend),
+          hip: const UserIntProperty(access: PeopleType.friend),
+          waist: const UserIntProperty(access: PeopleType.friend),
+          chest: const UserIntProperty(access: PeopleType.friend),
         );
         AppPreference.token = user.uid;
         AppPreference.user = _model;

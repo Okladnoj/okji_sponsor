@@ -42,9 +42,6 @@ class HomeApi {
     //   });
     // });
 
-    log(user.toJson().toString());
-    log(result.toJson().toString());
-
     return result;
   }
 }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "399707653351",
+    "firebase_url": "https://sponsor-okji-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "sponsor-okji",
     "storage_bucket": "sponsor-okji.appspot.com"
   },
@@ -19,6 +20,14 @@
           "android_info": {
             "package_name": "com.okji.sponsor",
             "certificate_hash": "4405f55e8c136f0ee64c12cab2ec5f5763b4fb5e"
+          }
+        },
+        {
+          "client_id": "399707653351-9skkqecq0shqtjt7o1u8rqqj25f43flq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.okji.sponsor",
+            "certificate_hash": "bc1ea3e0ff6ef5cd94201271e83a0db00628cf97"
           }
         },
         {

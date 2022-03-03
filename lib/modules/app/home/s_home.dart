@@ -8,4 +8,6 @@ abstract class HomeListener<T extends StatefulWidget> implements State<T> {
   Future<R?> onEditProfile<R>();
 
   Future<R?> onNavigateToPeopleP<R>();
+
+  Future<R?> onNavigateToAdministrationP<R>();
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../settings/design_styles.dart';
+import '../../settings/design_styles.dart';
 
 class DesignLoadingOverlayRoute<T> extends PopupRoute<T> {
   DesignLoadingOverlayRoute() : super(settings: const RouteSettings(name: NAME));

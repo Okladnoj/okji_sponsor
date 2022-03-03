@@ -193,13 +193,17 @@ class _$_HomeModelResponse implements _HomeModelResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HomeModelResponse &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.user, user) || other.user == user));
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, user);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
